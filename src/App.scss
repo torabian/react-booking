@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css?family=Oxygen|Roboto&display=swap');
+@import './assets/css/react-datepicker.scss';
+@import './assets/css/icon.css';
+
+$mainColor: #367fda;
+
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Oxygen', sans-serif;
+  text-align: center;
+}
+
+.campagin-wrapper {
+  width: 100%;
+  max-width: 900px;
+  margin: 10px auto;
+  padding: 0 10px 35px;
+  box-shadow: 0 0 5px #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.appointments {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .appointment {
+    display: flex;
+    flex: 1;
+    min-width: 270px;
+    animation-duration: 1s;
+    animation-name: slidein;
+    animation-iteration-count: 1;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    cursor: pointer;
+    margin: 7px;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    @for $i from 1 through 100 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{0.1 * $i}s;
+      }
+    }
+
+    > div {
+      text-align: center;
+      transition: all 0.4s;
+    }
+
+    .appointment-time {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid $mainColor;
+      border-radius: 5px;
+    }
+    .appointment-confirm {
+      padding-left: 6px;
+      position: absolute;
+      right: -100%;
+      height: 100%;
+      button {
+        background-color: $mainColor;
+        color: #fff;
+        padding: 15px;
+        border-radius: 5px;
+        border: 0px;
+        font-size: 17px;
+        width: 100%;
+        height: 100%;
+        outline: 0;
+        cursor: pointer;
+      }
+    }
+
+    &.selected {
+      cursor: default;
+      .appointment-time {
+        border-color: transparent;
+        background: #888;
+        color: #fff;
+        padding: 15px 5px;
+        border-radius: 5px;
+        width: 50%;
+      }
+      .appointment-confirm {
+        right: 0;
+        width: 50%;
+      }
+    }
+  }
+}
+
+.navigation-path {
+  box-shadow: 0px 5px 17px 4px #eee;
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-bottom: 50px;
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    li {
+      list-style: none;
+      flex: 1;
+      border-right: 1px solid #ddd;
+      padding: 15px;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      &:last-child {
+        border-right: 0px;
+      }
+      &.active {
+        border-bottom: 3px solid $mainColor;
+      }
+      .icon {
+        margin-right: 10px;
+        font-size: 16px;
+      }
+      span {
+        white-space: pre-wrap;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+@keyframes slidein {
+  0% {
+    opacity: 0;
+  }
+  25%,
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.react-datepicker {
+  width: 100%;
+  .react-datepicker__month-container {
+    width: 100%;
+    .react-datepicker__week {
+      display: flex;
+      .react-datepicker__day {
+        flex: 1;
+        border-radius: 3px;
+        border: 1px solid #ddd;
+        padding: 5px;
+        height: 38px;
+        &.react-datepicker__day--selected {
+          color: #fff !important;
+          background: $mainColor;
+          border-color: $mainColor;
+        }
+        &:not(.react-datepicker__day--disabled) {
+          color: $mainColor;
+          border-color: $mainColor;
+        }
+      }
+    }
+    .react-datepicker__day-names {
+      display: flex;
+      .react-datepicker__day-name {
+        flex: 1;
+        padding: 5px;
+        height: 38px;
+      }
+    }
+  }
+}
