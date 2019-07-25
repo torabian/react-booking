@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Oxygen|Roboto&display=swap');
 @import './assets/css/react-datepicker.scss';
 @import './assets/css/icon.css';
+@import './assets/css/flex-grid.css';
 
 $mainColor: #367fda;
 
@@ -9,6 +10,9 @@ $mainColor: #367fda;
 }
 body {
   font-family: 'Oxygen', sans-serif;
+}
+
+.text-center {
   text-align: center;
 }
 
@@ -20,6 +24,7 @@ body {
   box-shadow: 0 0 5px #ddd;
   border-radius: 5px;
   overflow: hidden;
+  position: relative;
 }
 
 .appointments {
@@ -107,11 +112,17 @@ body {
       list-style: none;
       flex: 1;
       border-right: 1px solid #ddd;
-      padding: 15px;
       display: flex;
       text-align: center;
       align-items: center;
       justify-content: center;
+      > a {
+        text-decoration: none;
+        color: #333;
+        display: block;
+        padding: 15px;
+        width: 100%;
+      }
       &:last-child {
         border-right: 0px;
       }
@@ -129,6 +140,55 @@ body {
         overflow: hidden;
       }
     }
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.form-container {
+  margin-top: 30px;
+  padding: 10px;
+}
+.booking-widget-input-group {
+  margin: 10px 0;
+  .booking-widget-input-title {
+    color: #999;
+    font-weight: 500;
+    text-align: left;
+    padding-bottom: 10px;
+    font-size: 14px;
+    > .icon {
+      margin-right: 5px;
+    }
+  }
+  .booking-widget-input {
+    border: 2px solid #eaeaea;
+    border-radius: 4px;
+    padding: 10px;
+    outline: 0;
+    width: 100%;
+    font-size: 15px;
+    transition: border 0.2s;
+    &:focus {
+      border-color: $mainColor;
+    }
+  }
+  &.warning {
+    .booking-widget-input {
+      border-color: #f59292;
+    }
+  }
+  > span {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #f59292;
   }
 }
 
@@ -177,4 +237,22 @@ body {
       }
     }
   }
+}
+
+.fade-enter {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 250s ease-in;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 250ms ease-in;
 }

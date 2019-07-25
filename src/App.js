@@ -1,10 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.scss';
 import { WidgetComponent } from './components/widget.component';
 
 function App() {
-  return <WidgetComponent />;
+  return (
+    <Router>
+      <Route
+        exact
+        render={({ location }) => <WidgetComponent location={location} />}
+      />
+    </Router>
+  );
 }
 
 export default App;

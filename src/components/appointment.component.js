@@ -36,7 +36,7 @@ export class AppointmentComponent extends Component {
           onChange={this.handleDatepicker}
         />
         {this.state.startDate && (
-          <div>
+          <div className="text-center">
             <h3>Active appointments</h3>
 
             <div className="appointments">
