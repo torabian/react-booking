@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import { setAppointment } from './store';
 
 export class AppointmentComponent extends Component {
   constructor(props) {
@@ -24,8 +25,22 @@ export class AppointmentComponent extends Component {
     });
   }
 
+  confirmAppointment(date, slot) {
+    const data = {
+      slotId: slot.id,
+      slotDate: date,
+      slotTime: `${slot.from} - ${slot.to}`,
+      slotPrice: '10 zl'
+    };
+    setAppointment(data);
+    this.props.history.push('/personel-information');
+  }
+
   render() {
     const { campaign } = this.props;
+    const event = campaign.events.find(
+      x => x.date === moment(this.state.startDate).format('YYYY-MM-DD')
+    );
     return (
       <div>
         <DatePicker
@@ -40,31 +55,30 @@ export class AppointmentComponent extends Component {
             <h3>Active appointments</h3>
 
             <div className="appointments">
-              {campaign.events
-                .find(
-                  x =>
-                    x.date === moment(this.state.startDate).format('YYYY-MM-DD')
-                )
-                .slots.map(i => {
-                  return (
-                    <div
-                      onClick={() => this.handleSeletctedSlot(i.id)}
-                      key={i.id}
-                      className={
-                        this.state.selectedSlot === i.id
-                          ? 'appointment selected'
-                          : 'appointment'
-                      }
-                    >
-                      <div className="appointment-time">
-                        <span>{i.from}</span> - <span>{i.to}</span>
-                      </div>
-                      <div className="appointment-confirm">
-                        <button cla>Confirm</button>
-                      </div>
+              {event.slots.map(i => {
+                return (
+                  <div
+                    onClick={() => this.handleSeletctedSlot(i.id)}
+                    key={i.id}
+                    className={
+                      this.state.selectedSlot === i.id
+                        ? 'appointment selected'
+                        : 'appointment'
+                    }
+                  >
+                    <div className="appointment-time">
+                      <span>{i.from}</span> - <span>{i.to}</span>
                     </div>
-                  );
-                })}
+                    <div className="appointment-confirm">
+                      <button
+                        onClick={() => this.confirmAppointment(event.date, i)}
+                      >
+                        Confirm
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}

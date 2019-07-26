@@ -14,6 +14,7 @@ export class FormInputComponent extends Component {
             className="booking-widget-input"
             type="text"
             placeholder={placeholder}
+            onInput={e => this.props.onChange(e.target.value)}
           />
         </div>
         {false && <span>This field is required</span>}

@@ -400,6 +400,7 @@ body {
   margin: 25px 15px 15px;
   display: flex;
   flex-wrap: wrap;
+  overflow-x: auto;
   > div {
     flex: 1;
     padding: 7px 15px;
