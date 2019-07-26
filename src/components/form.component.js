@@ -13,11 +13,11 @@ export class FormComponent extends Component {
             <FormInputComponent title="EMAIL" icon="icon-at-sign" />
           </div>
           <div className="flex-1">
-            <FormInputComponent title="PHONE NUMBER" icon="icon-at-sign" />
+            <FormInputComponent title="PHONE NUMBER" icon="icon-phone" />
           </div>
         </div>
         <div className="d-flex flex-wrap">
-          <div className="flex-5">
+          <div className="flex-3">
             <FormInputComponent
               title="ADDRESS (optional)"
               icon="icon-map-pin"

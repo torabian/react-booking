@@ -392,3 +392,29 @@ body {
     }
   }
 }
+
+.selected-appointment-information {
+  background: #eee;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 25px 15px 15px;
+  display: flex;
+  flex-wrap: wrap;
+  > div {
+    flex: 1;
+    padding: 7px 15px;
+    min-width: 300px;
+    .icon {
+      font-size: 20px;
+      margin-right: 10px;
+      color: $mainColor;
+    }
+    .selected-appointment-information-title {
+      color: $mainColor;
+    }
+    .selected-appointment-information-value {
+      display: inline-block;
+      margin-left: 5px;
+    }
+  }
+}

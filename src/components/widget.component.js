@@ -94,7 +94,69 @@ export class WidgetComponent extends Component {
           <h1>{campaign.title}</h1>
           <p>{campaign.description}</p>
         </div>
-
+        <div className="selected-appointment-information">
+          <div>
+            <i className="icon icon-user" />
+            <span className="selected-appointment-information-title">
+              Fullname:
+            </span>
+            <span className="selected-appointment-information-value">
+              Yousef Sami
+            </span>
+          </div>
+          <div>
+            <i className="icon icon-at-sign" />
+            <span className="selected-appointment-information-title">
+              Email:
+            </span>
+            <span className="selected-appointment-information-value">
+              nsocial72@gmail.com
+            </span>
+          </div>
+          <div>
+            <i className="icon icon-phone" />
+            <span className="selected-appointment-information-title">
+              Phone number:
+            </span>
+            <span className="selected-appointment-information-value">
+              00989121234567
+            </span>
+          </div>
+          <div>
+            <i className="icon icon-calendar" />
+            <span className="selected-appointment-information-title">
+              Date:
+            </span>
+            <span className="selected-appointment-information-value">
+              2014-02-15
+            </span>
+          </div>
+          <div>
+            <i className="icon icon-clock" />
+            <span className="selected-appointment-information-title">
+              Time:
+            </span>
+            <span className="selected-appointment-information-value">
+              18:30
+            </span>
+          </div>
+          <div>
+            <i className="icon icon-dollar-sign" />
+            <span className="selected-appointment-information-title">
+              Price:
+            </span>
+            <span className="selected-appointment-information-value">
+              150 Zl
+            </span>
+          </div>
+          <div>
+            <i className="icon icon-layers" />
+            <span className="selected-appointment-information-title">
+              Capacity:
+            </span>
+            <span>2</span>
+          </div>
+        </div>
         <TransitionGroup>
           <CSSTransition
             key={this.props.location.key}
