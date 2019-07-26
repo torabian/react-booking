@@ -4,6 +4,7 @@ import { getMockData } from './mock';
 import { Route, Link, Switch } from 'react-router-dom';
 import { FormComponent } from './form.component';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { FinalStatusComponent } from './final-status.component';
 
 export class NavLink extends Component {
   content() {
@@ -17,16 +18,13 @@ export class NavLink extends Component {
 
   render() {
     if (this.props.pathname === this.props.to) {
-      return <span>{this.content()}</span>;
+      return (
+        <span className={this.props.pathname === this.props.to ? 'active' : ''}>
+          {this.content()}
+        </span>
+      );
     }
-    return (
-      <Link
-        className={this.props.pathname === this.props.to ? 'active' : ''}
-        to={this.props.to}
-      >
-        {this.content()}
-      </Link>
-    );
+    return <Link to={this.props.to}>{this.content()}</Link>;
   }
 }
 
@@ -82,15 +80,21 @@ export class WidgetComponent extends Component {
               <span>Payment Page</span>
             </li>
             <li>
-              <i className="icon icon-award" />
-              <span>Final Status</span>
+              <NavLink
+                label="Final Status"
+                icon="icon-award"
+                to="/final-status"
+                pathname={pathname}
+              />
             </li>
           </ul>
         </div>
+
         <div className="text-center">
           <h1>{campaign.title}</h1>
           <p>{campaign.description}</p>
         </div>
+
         <TransitionGroup>
           <CSSTransition
             key={this.props.location.key}
@@ -101,14 +105,17 @@ export class WidgetComponent extends Component {
               <Route
                 path="/"
                 exact
-                key={1}
                 component={() => <AppointmentComponent campaign={campaign} />}
               />
               <Route
                 path="/personel-information"
                 exact
-                key={2}
                 component={FormComponent}
+              />
+              <Route
+                path="/final-status"
+                exact
+                component={FinalStatusComponent}
               />
             </Switch>
           </CSSTransition>

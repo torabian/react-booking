@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Oxygen|Roboto&display=swap');
 @import './assets/css/react-datepicker.scss';
 @import './assets/css/icon.css';
-@import './assets/css/flex-grid.css';
 
 $mainColor: #367fda;
+$mainForeColor: #ffffff;
 
 * {
   box-sizing: border-box;
@@ -69,7 +69,7 @@ body {
       height: 100%;
       button {
         background-color: $mainColor;
-        color: #fff;
+        color: $mainForeColor;
         padding: 15px;
         border-radius: 5px;
         border: 0px;
@@ -78,6 +78,9 @@ body {
         height: 100%;
         outline: 0;
         cursor: pointer;
+        &:hover {
+          background-color: lighten($mainColor, 3%);
+        }
       }
     }
 
@@ -138,6 +141,14 @@ body {
         text-overflow: ellipsis;
         max-width: 100%;
         overflow: hidden;
+        font-size: 15px;
+        &.active {
+          background-color: #fafafa;
+          display: block;
+          padding: 15px;
+          width: 100%;
+          color: $mainColor;
+        }
       }
     }
   }
@@ -151,9 +162,35 @@ body {
   flex-wrap: wrap;
 }
 
+.flex-content-spece {
+  justify-content: space-between;
+}
+.flex-end {
+  justify-content: flex-end;
+}
+.flex-start {
+  justify-content: flex-start;
+}
+
+@for $i from 1 through 12 {
+  .flex-#{$i} {
+    flex: $i;
+  }
+}
+
 .form-container {
   margin-top: 30px;
   padding: 10px;
+  [class^='flex'] {
+    padding: 0 10px;
+    min-width: 200px;
+  }
+  .button-wrapper {
+    margin-top: 20px;
+    > .btn {
+      margin-right: 10px;
+    }
+  }
 }
 .booking-widget-input-group {
   margin: 10px 0;
@@ -218,7 +255,7 @@ body {
         padding: 5px;
         height: 38px;
         &.react-datepicker__day--selected {
-          color: #fff !important;
+          color: $mainForeColor !important;
           background: $mainColor;
           border-color: $mainColor;
         }
@@ -255,4 +292,103 @@ body {
 .fade-exit-active {
   opacity: 0;
   transition: opacity 250ms ease-in;
+}
+
+.btn {
+  background: transparent;
+  border: 0px;
+  box-shadow: none;
+  padding: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: 0;
+  &.btn-primary {
+    background-color: $mainColor;
+    color: $mainForeColor;
+    &:hover {
+      background-color: lighten($mainColor, 3%);
+    }
+  }
+  &.btn-default {
+    background-color: #888;
+    color: #fff;
+    &:hover {
+      background-color: lighten(#888, 3%);
+    }
+  }
+}
+
+.alert {
+  display: flex;
+  padding: 0px 15px;
+  margin: 10px 0;
+  border-radius: 3px;
+  align-items: center;
+  font-size: 15px;
+  > .icon {
+    font-size: 25px;
+    margin-right: 10px;
+  }
+  &.alert-warning {
+    background-color: #ff7043;
+    color: #fff;
+  }
+  &.alert-success {
+    background-color: #8bc34a;
+    color: #fff;
+  }
+}
+
+.final-status-wrapper {
+  text-align: center;
+  &.successed {
+    .icon-wrapper {
+      border: 2px solid green;
+      color: green;
+      .icon:before {
+        content: '\e904';
+        font-style: normal;
+      }
+    }
+    .final-box-wrapper {
+      color: green;
+    }
+  }
+  &.failed {
+    .icon-wrapper {
+      border: 2px solid red;
+      color: red;
+      .icon:before {
+        content: '\e913';
+        font-style: normal;
+      }
+    }
+    .final-box-wrapper {
+      color: red;
+    }
+  }
+  .icon-wrapper {
+    display: inline-block;
+    border-radius: 100%;
+    padding: 5px;
+    font-size: 45px;
+  }
+  .final-box-wrapper {
+    padding: 15px;
+    border-radius: 5px;
+  }
+  .final-status-code-box {
+    img {
+      display: inline-block;
+      width: 150px;
+      clear: both;
+    }
+    .reservation-code {
+      background: green;
+      color: #fff;
+      border-radius: 5px;
+      padding: 10px 15px;
+      display: inline-block;
+    }
+  }
 }
