@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropType from 'prop-types';
 import { AppointmentComponent } from './appointment.component';
 import { getMockData } from './mock';
 import { Route, Link, Switch } from 'react-router-dom';
@@ -6,7 +7,6 @@ import { FormComponent } from './form.component';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { FinalStatusComponent } from './final-status.component';
 import AppointmentInformationComponent from './appointment-information.component';
-import { setAppointment } from './store';
 
 export class NavLink extends Component {
   content() {
@@ -31,6 +31,16 @@ export class NavLink extends Component {
 }
 
 export class WidgetComponent extends Component {
+  static propTypes = {
+    title: PropType.string,
+    description: PropType.string
+  };
+  static defaultProps = {
+    title: 'Booking and reservation',
+    description:
+      'Please complete your booking here. Select an appointment and continue.'
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -93,8 +103,8 @@ export class WidgetComponent extends Component {
         </div>
 
         <div className="text-center">
-          <h1>{campaign.title}</h1>
-          <p>{campaign.description}</p>
+          <h1>{this.props.title}</h1>
+          <p>{this.props.description}</p>
         </div>
         <AppointmentInformationComponent />
         <TransitionGroup>

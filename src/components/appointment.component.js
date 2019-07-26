@@ -10,14 +10,13 @@ export class AppointmentComponent extends Component {
       data: null,
       selectedSlot: null
     };
-    this.handleDatepicker = this.handleDatepicker.bind(this);
   }
 
-  handleDatepicker(date) {
+  handleDatepicker = date => {
     this.setState({
       startDate: date
     });
-  }
+  };
 
   handleSeletctedSlot(slot) {
     this.setState({
@@ -41,13 +40,15 @@ export class AppointmentComponent extends Component {
     const event = campaign.events.find(
       x => x.date === moment(this.state.startDate).format('YYYY-MM-DD')
     );
+    const includeDates = campaign.events.map(i => new Date(i.date));
+
     return (
       <div>
         <DatePicker
           inline
           selectsStart
           selected={this.state.startDate}
-          includeDates={campaign.events.map(i => new Date(i.date))}
+          includeDates={includeDates}
           onChange={this.handleDatepicker}
         />
         {this.state.startDate && (

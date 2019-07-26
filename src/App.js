@@ -8,7 +8,17 @@ function App() {
     <Router>
       <Route
         exact
-        render={({ location }) => <WidgetComponent location={location} />}
+        render={({ location }) => (
+          <div>
+            <WidgetComponent
+              title="Booking"
+              description="Setup your booking"
+              paymentMethods={{ cash: true, online: false }}
+              appointments={[{ start: 1, end: 2, capacity: 10 }]}
+              location={location}
+            />
+          </div>
+        )}
       />
     </Router>
   );

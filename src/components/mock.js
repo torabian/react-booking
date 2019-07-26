@@ -1,12 +1,10 @@
-import { async } from 'q';
-
 const data = {
   title: 'Campaing number 1',
   description:
     'Lorem Ipsum is simply dummy text of the printing and typesetting industry ...',
   events: [
     {
-      date: '2019-07-26',
+      date: '2019-08-26',
       slots: [
         {
           id: 1,
