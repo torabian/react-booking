@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+import {
+  MemoryRouter,
+  BrowserRouter,
+  Route,
+  Switch,
+  Link
+} from 'react-router-dom';
 import PropType from 'prop-types';
 import { AppointmentComponent } from './appointment.component';
 import { getMockData } from './mock';
-import { Route, Link, Switch } from 'react-router-dom';
 import { FormComponent } from './form.component';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { FinalStatusComponent } from './final-status.component';
@@ -33,12 +39,18 @@ export class NavLink extends Component {
 export class WidgetComponent extends Component {
   static propTypes = {
     title: PropType.string,
-    description: PropType.string
+    description: PropType.string,
+    historyType: PropType.oneOf(['browser', 'memory']),
+    paymentTab: PropType.bool,
+    appointments: PropType.array
   };
   static defaultProps = {
     title: 'Booking and reservation',
     description:
-      'Please complete your booking here. Select an appointment and continue.'
+      'Please complete your booking here. Select an appointment and continue.',
+    historyType: 'memory',
+    paymentTab: true,
+    appointments: []
   };
 
   constructor(props) {
@@ -66,75 +78,91 @@ export class WidgetComponent extends Component {
 
   render() {
     const { campaign } = this.state;
-    const { pathname } = this.props.location;
-    return this.state.loaded === true ? (
-      <div className="campagin-wrapper">
-        <div className="navigation-path">
-          <ul>
-            <li>
-              <NavLink
-                label="Select Date"
-                icon="icon-calendar"
-                to="/"
-                pathname={pathname}
-              />
-            </li>
-            <li>
-              <NavLink
-                label="Attendance Information"
-                icon="icon-user"
-                to="/personel-information"
-                pathname={pathname}
-              />
-            </li>
-            <li>
-              <i className="icon icon-credit-card" />
-              <span>Payment Page</span>
-            </li>
-            <li>
-              <NavLink
-                label="Final Status"
-                icon="icon-award"
-                to="/final-status"
-                pathname={pathname}
-              />
-            </li>
-          </ul>
-        </div>
 
-        <div className="text-center">
-          <h1>{this.props.title}</h1>
-          <p>{this.props.description}</p>
-        </div>
-        <AppointmentInformationComponent />
-        <TransitionGroup>
-          <CSSTransition
-            key={this.props.location.key}
-            timeout={300}
-            classNames="fade"
-          >
-            <Switch location={this.props.location}>
-              <Route
-                path="/"
-                exact
-                component={props => (
-                  <AppointmentComponent {...props} campaign={campaign} />
-                )}
-              />
-              <Route
-                path="/personel-information"
-                exact
-                component={props => <FormComponent {...props} />}
-              />
-              <Route
-                path="/final-status"
-                exact
-                component={FinalStatusComponent}
-              />
-            </Switch>
-          </CSSTransition>
-        </TransitionGroup>
-      </div>
+    const Router =
+      this.props.historyType === 'memory' ? MemoryRouter : BrowserRouter;
+
+    return this.state.loaded === true ? (
+      <Router>
+        <Route
+          exact
+          render={({ location }) => (
+            <div className="campagin-wrapper">
+              <div className="navigation-path">
+                <ul>
+                  <li>
+                    <NavLink
+                      label="Select Date"
+                      icon="icon-calendar"
+                      to="/"
+                      pathname={location.pathname}
+                    />
+                  </li>
+                  <li>
+                    <NavLink
+                      label="Attendance Information"
+                      icon="icon-user"
+                      to="/personel-information"
+                      pathname={location.pathname}
+                    />
+                  </li>
+                  {this.props.paymentTab ? (
+                    <li>
+                      <i className="icon icon-credit-card" />
+                      <span>Payment Page</span>
+                    </li>
+                  ) : null}
+                  <li>
+                    <NavLink
+                      label="Final Status"
+                      icon="icon-award"
+                      to="/final-status"
+                      pathname={location.pathname}
+                    />
+                  </li>
+                </ul>
+              </div>
+
+              <div className="text-center">
+                <h1>{this.props.title}</h1>
+                <p>{this.props.description}</p>
+              </div>
+              <AppointmentInformationComponent />
+              <TransitionGroup>
+                <CSSTransition
+                  key={location.key}
+                  timeout={300}
+                  classNames="fade"
+                >
+                  <Switch location={location}>
+                    <Route
+                      path="/"
+                      exact
+                      component={props => (
+                        <AppointmentComponent
+                          {...props}
+                          campaign={campaign}
+                          appointments={this.props.appointments}
+                        />
+                      )}
+                    />
+                    <Route
+                      path="/personel-information"
+                      exact
+                      component={props => <FormComponent {...props} />}
+                    />
+                    <Route
+                      path="/final-status"
+                      exact
+                      component={FinalStatusComponent}
+                    />
+                  </Switch>
+                </CSSTransition>
+              </TransitionGroup>
+            </div>
+          )}
+        />
+      </Router>
     ) : (
       <div>Please wait we are getting data from our servers ...</div>
     );

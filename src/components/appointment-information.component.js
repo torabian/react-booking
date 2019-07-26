@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Store } from './store';
 import rxProp from 'rxprop';
+import moment from 'moment';
 
 class AppointmentInformationComponent extends Component {
   render() {
@@ -50,7 +51,7 @@ class AppointmentInformationComponent extends Component {
               Date:
             </span>
             <span className="selected-appointment-information-value">
-              {user.slotDate}
+              {moment(user.slotDate).format('YYYY/MM/DD')}
             </span>
           </div>
         )}

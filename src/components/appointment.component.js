@@ -24,23 +24,27 @@ export class AppointmentComponent extends Component {
     });
   }
 
-  confirmAppointment(date, slot) {
+  confirmAppointment(slot) {
     const data = {
       slotId: slot.id,
-      slotDate: date,
-      slotTime: `${slot.from} - ${slot.to}`,
-      slotPrice: '10 zl'
+      slotDate: slot.start,
+      slotTime: `${moment(slot.start).format('HH:mm')} - ${moment(
+        slot.end
+      ).format('HH:mm')}`,
+      slotPrice: slot.price ? `${slot.price.amount} ${slot.price.curr}` : null
     };
     setAppointment(data);
     this.props.history.push('/personel-information');
   }
 
   render() {
-    const { campaign } = this.props;
-    const event = campaign.events.find(
-      x => x.date === moment(this.state.startDate).format('YYYY-MM-DD')
+    const { campaign, appointments } = this.props;
+    const { startDate } = this.state;
+
+    const includeDates = appointments.map(app => app.start);
+    const appointmentsInDate = appointments.filter(app =>
+      moment(app.start).isSame(moment(startDate), 'date')
     );
-    const includeDates = campaign.events.map(i => new Date(i.date));
 
     return (
       <div>
@@ -56,7 +60,7 @@ export class AppointmentComponent extends Component {
             <h3>Active appointments</h3>
 
             <div className="appointments">
-              {event.slots.map(i => {
+              {appointmentsInDate.map(i => {
                 return (
                   <div
                     onClick={() => this.handleSeletctedSlot(i.id)}
@@ -68,12 +72,11 @@ export class AppointmentComponent extends Component {
                     }
                   >
                     <div className="appointment-time">
-                      <span>{i.from}</span> - <span>{i.to}</span>
+                      <span>{moment(i.start).format('HH:mm')}</span> -{' '}
+                      <span>{moment(i.end).format('HH:mm')}</span>
                     </div>
                     <div className="appointment-confirm">
-                      <button
-                        onClick={() => this.confirmAppointment(event.date, i)}
-                      >
+                      <button onClick={() => this.confirmAppointment(i)}>
                         Confirm
                       </button>
                     </div>
