@@ -127,7 +127,7 @@ export class WidgetComponent extends Component {
                 <h1>{this.props.title}</h1>
                 <p>{this.props.description}</p>
               </div>
-              <AppointmentInformationComponent />
+              <AppointmentInformationComponent user={{}} />
               <TransitionGroup>
                 <CSSTransition
                   key={location.key}

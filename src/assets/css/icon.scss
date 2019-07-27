@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?vda9cv');
-  src:  url('../fonts/icomoon.eot?vda9cv#iefix') format('embedded-opentype'),
+  src: url('../fonts/icomoon.eot?vda9cv');
+  src: url('../fonts/icomoon.eot?vda9cv#iefix') format('embedded-opentype'),
     url('../fonts/icomoon.ttf?vda9cv') format('truetype'),
     url('../fonts/icomoon.woff?vda9cv') format('woff'),
     url('../fonts/icomoon.svg?vda9cv#icomoon') format('svg');
@@ -9,7 +9,8 @@
   font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^='icon-'],
+[class*=' icon-'] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: none;
@@ -25,77 +26,77 @@
 }
 
 .icon-clear:before {
-  content: "\e913";
+  content: '\e913';
 }
 .icon-close:before {
-  content: "\e913";
+  content: '\e913';
 }
 .icon-alert-triangle:before {
-  content: "\e900";
+  content: '\e900';
 }
 .icon-at-sign:before {
-  content: "\e901";
+  content: '\e901';
 }
 .icon-award:before {
-  content: "\e902";
+  content: '\e902';
 }
 .icon-calendar:before {
-  content: "\e903";
+  content: '\e903';
 }
 .icon-check:before {
-  content: "\e904";
+  content: '\e904';
 }
 .icon-chevron-down:before {
-  content: "\e905";
+  content: '\e905';
 }
 .icon-chevron-left:before {
-  content: "\e906";
+  content: '\e906';
 }
 .icon-chevron-right:before {
-  content: "\e907";
+  content: '\e907';
 }
 .icon-chevron-up:before {
-  content: "\e908";
+  content: '\e908';
 }
 .icon-clock:before {
-  content: "\e914";
+  content: '\e914';
 }
 .icon-credit-card:before {
-  content: "\e909";
+  content: '\e909';
 }
 .icon-dollar-sign:before {
-  content: "\e90a";
+  content: '\e90a';
 }
 .icon-edit:before {
-  content: "\e90b";
+  content: '\e90b';
 }
 .icon-heart:before {
-  content: "\e90c";
+  content: '\e90c';
 }
 .icon-home:before {
-  content: "\e90d";
+  content: '\e90d';
 }
 .icon-layers:before {
-  content: "\e915";
+  content: '\e915';
 }
 .icon-map-pin:before {
-  content: "\e90e";
+  content: '\e90e';
 }
 .icon-map:before {
-  content: "\e90f";
+  content: '\e90f';
 }
 .icon-phone:before {
-  content: "\e910";
+  content: '\e910';
 }
 .icon-settings:before {
-  content: "\e911";
+  content: '\e911';
 }
 .icon-user:before {
-  content: "\e912";
+  content: '\e912';
 }
 .icon-qrcode:before {
-  content: "\e938";
+  content: '\e938';
 }
 .icon-ticket:before {
-  content: "\e939";
+  content: '\e939';
 }

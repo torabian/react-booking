@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Store } from './store';
-import rxProp from 'rxprop';
 import moment from 'moment';
+import { rxProp } from '../../pages/pixelplux-common';
 
 class AppointmentInformationComponent extends Component {
   render() {
     const { user } = this.props;
-    if (!user.slotId) {
+    if (!user || !user.slotId) {
       return <></>;
     }
     return (

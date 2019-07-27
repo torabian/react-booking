@@ -2,9 +2,16 @@
   "name": "pixelplux-calendar",
   "version": "0.1.0",
   "private": true,
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/plugin-proposal-decorators": "^7.4.0"
+  },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
     "gh-pages": "^2.0.1",
     "moment": "^2.24.0",
+    "next": "^8.1.0",
     "node-sass": "^4.12.0",
     "prism-react-renderer": "^0.1.7",
     "react": "^16.8.6",
@@ -17,8 +24,9 @@
     "rxprop": "^1.0.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
     "build": "react-scripts build",
+    "css": " node-sass src/App.scss -o static",
     "test": "react-scripts test",
     "gh-pages": "gh-pages -d build",
     "eject": "react-scripts eject"
