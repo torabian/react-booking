@@ -1,17 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.7d285901.chunk.css",
-    "main.js": "/static/js/main.95a35d8a.chunk.js",
-    "main.js.map": "/static/js/main.95a35d8a.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/js/2.fd9778cc.chunk.js": "/static/js/2.fd9778cc.chunk.js",
-    "static/js/2.fd9778cc.chunk.js.map": "/static/js/2.fd9778cc.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.204ca2b041f0a451522fd42b421bcecb.js": "/precache-manifest.204ca2b041f0a451522fd42b421bcecb.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.7d285901.chunk.css.map": "/static/css/main.7d285901.chunk.css.map",
-    "static/media/App.scss": "/static/media/icomoon.d8a374ed.svg",
-    "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg"
+    "main.css": "/react-booking/static/css/main.4c713566.chunk.css",
+    "main.js": "/react-booking/static/js/main.beb5a025.chunk.js",
+    "main.js.map": "/react-booking/static/js/main.beb5a025.chunk.js.map",
+    "runtime~main.js": "/react-booking/static/js/runtime~main.f1f11043.js",
+    "runtime~main.js.map": "/react-booking/static/js/runtime~main.f1f11043.js.map",
+    "static/js/2.424580d7.chunk.js": "/react-booking/static/js/2.424580d7.chunk.js",
+    "static/js/2.424580d7.chunk.js.map": "/react-booking/static/js/2.424580d7.chunk.js.map",
+    "index.html": "/react-booking/index.html",
+    "precache-manifest.922dac38d35d17c4b87a386060b629a6.js": "/react-booking/precache-manifest.922dac38d35d17c4b87a386060b629a6.js",
+    "service-worker.js": "/react-booking/service-worker.js",
+    "static/css/main.4c713566.chunk.css.map": "/react-booking/static/css/main.4c713566.chunk.css.map",
+    "static/media/styles.scss": "/react-booking/static/media/icomoon.ec121959.eot"
   }
 }
