@@ -47,8 +47,7 @@ export default class extends React.Component {
   render() {
     return (
       <html>
-        <link rel="stylesheet" href="/static/App.css" />
-        <link rel="stylesheet" href="/static/styles.css" />
+        <link rel="stylesheet" href="/static/css/styles.css" />
 
         <div className="calendar-container">
           <WidgetComponent paymentTab={false} />

@@ -26,7 +26,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "css": " node-sass src/App.scss -o static",
+    "css": " node-sass src/assets/css/styles.scss -o static/css",
     "test": "react-scripts test",
     "gh-pages": "gh-pages -d build",
     "eject": "react-scripts eject",
