@@ -24,12 +24,13 @@
     "rxprop": "^1.0.2"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "css": " node-sass src/App.scss -o static",
     "test": "react-scripts test",
     "gh-pages": "gh-pages -d build",
     "eject": "react-scripts eject",
+    "next": " rm -rf .next/ && git checkout .next",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },

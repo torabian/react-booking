@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Oxygen|Roboto&display=swap');
-@import './assets/css/react-datepicker.scss';
-@import './assets/css/icon.scss';
+@import './react-datepicker.scss';
+@import './icon.scss';
+@import './document.scss';
 
 $mainColor: #367fda;
 $mainForeColor: #ffffff;
@@ -419,5 +420,3 @@ body {
     }
   }
 }
-
-@import './document.scss';
