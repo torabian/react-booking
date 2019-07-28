@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Store } from './store';
 import moment from 'moment';
-import { rxProp } from '../../pages/pixelplux-common';
+import { rxProp } from './rxprop';
 
 class AppointmentInformationComponent extends Component {
   render() {
