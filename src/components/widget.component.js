@@ -149,7 +149,13 @@ export class WidgetComponent extends Component {
                     <Route
                       path="/personel-information"
                       exact
-                      component={props => <FormComponent {...props} />}
+                      component={props => (
+                        <FormComponent
+                          {...props}
+                          onFormSubmit={this.props.onFormSubmit}
+                          response={this.props.response}
+                        />
+                      )}
                     />
                     <Route
                       path="/final-status"

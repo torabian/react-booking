@@ -10,6 +10,9 @@ export class DocumentSidebar extends React.Component {
           <li>
             <Link to="/">Quick Demo</Link>
           </li>
+          <li>
+            <Link to="/on-submit-props">Submit call back</Link>
+          </li>
         </ul>
       </div>
     );

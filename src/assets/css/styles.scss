@@ -218,6 +218,9 @@ body {
     }
   }
   &.warning {
+    .booking-widget-input-title {
+      color: #f59292;
+    }
     .booking-widget-input {
       border-color: #f59292;
     }
@@ -418,5 +421,55 @@ body {
       display: inline-block;
       margin-left: 5px;
     }
+  }
+}
+
+.spinner-wrapper {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .spinner {
+    width: 40px;
+    height: 40px;
+    margin: 100px auto;
+    background-color: #444;
+
+    border-radius: 100%;
+    -webkit-animation: sk-scaleout 1s infinite ease-in-out;
+    animation: sk-scaleout 1s infinite ease-in-out;
+  }
+  > p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #666;
+  }
+}
+
+@-webkit-keyframes sk-scaleout {
+  0% {
+    -webkit-transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-scaleout {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0;
   }
 }
