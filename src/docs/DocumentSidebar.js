@@ -8,10 +8,13 @@ export class DocumentSidebar extends React.Component {
         <div className="document-title">React-booking &trade;</div>
         <ul className="menu-items">
           <li>
-            <Link to="/">Quick Demo</Link>
+            <Link to="/">Installation & Demo</Link>
           </li>
           <li>
             <Link to="/on-submit-props">Submit call back</Link>
+          </li>
+          <li>
+            <Link to="/payment-methods">Payment methods</Link>
           </li>
         </ul>
       </div>

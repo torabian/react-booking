@@ -4,6 +4,7 @@ import {
   BrowserRouter,
   Route,
   Switch,
+  Redirect,
   Link
 } from 'react-router-dom';
 import PropType from 'prop-types';
@@ -13,6 +14,7 @@ import { FormComponent } from './form.component';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { FinalStatusComponent } from './final-status.component';
 import AppointmentInformationComponent from './appointment-information.component';
+import { PaymentComponent } from './payment.component';
 
 export class NavLink extends Component {
   content() {
@@ -36,21 +38,24 @@ export class NavLink extends Component {
   }
 }
 
-export class WidgetComponent extends Component {
+export class ReactBooking extends Component {
   static propTypes = {
     title: PropType.string,
     description: PropType.string,
     historyType: PropType.oneOf(['browser', 'memory']),
     paymentTab: PropType.bool,
-    appointments: PropType.array
+    appointments: PropType.array,
+    visibleTab: PropType.string
   };
+
   static defaultProps = {
     title: 'Booking and reservation',
     description:
       'Please complete your booking here. Select an appointment and continue.',
     historyType: 'memory',
     paymentTab: true,
-    appointments: []
+    appointments: [],
+    visibleTab: 'datepicker'
   };
 
   constructor(props) {
@@ -66,6 +71,10 @@ export class WidgetComponent extends Component {
         zipCode: null
       }
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
   }
 
   async componentDidMount() {
@@ -94,7 +103,7 @@ export class WidgetComponent extends Component {
                     <NavLink
                       label="Select Date"
                       icon="icon-calendar"
-                      to="/"
+                      to="/datepicker"
                       pathname={location.pathname}
                     />
                   </li>
@@ -108,8 +117,12 @@ export class WidgetComponent extends Component {
                   </li>
                   {this.props.paymentTab ? (
                     <li>
-                      <i className="icon icon-credit-card" />
-                      <span>Payment Page</span>
+                      <NavLink
+                        to="/payment"
+                        pathname={location.pathname}
+                        label="Payment Page"
+                        icon="icon-credit-card"
+                      />
                     </li>
                   ) : null}
                   <li>
@@ -136,7 +149,7 @@ export class WidgetComponent extends Component {
                 >
                   <Switch location={location}>
                     <Route
-                      path="/"
+                      path="/datepicker"
                       exact
                       component={props => (
                         <AppointmentComponent
@@ -157,11 +170,16 @@ export class WidgetComponent extends Component {
                         />
                       )}
                     />
+
+                    <Route path="/payment" exact component={PaymentComponent} />
+
                     <Route
                       path="/final-status"
                       exact
                       component={FinalStatusComponent}
                     />
+
+                    <Redirect from="/" to={'/' + this.props.visibleTab} />
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>

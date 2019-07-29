@@ -1,8 +1,8 @@
 import React from 'react';
 import { Snippet } from '../Snippet';
-import { WidgetComponent } from '../../components/widget.component';
+import { ReactBooking } from '../../components/widget.component';
 
-const exampleCode = `<WidgetComponent
+const exampleCode = `<ReactBooking
   title="Booking"
   description="Setup your booking"
   historyType="memory"
@@ -77,7 +77,7 @@ export class OnSubmit extends React.Component {
       <div>
         <h1>React booking demo</h1>
 
-        <WidgetComponent
+        <ReactBooking
           title="Booking"
           description="Setup your booking"
           historyType="memory"

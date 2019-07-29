@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { acceptLang, initialProps } from './pixelplux-common';
-import { WidgetComponent } from '../src/components/widget.component';
+import { ReactBooking } from '../src/components/widget.component';
 
 export async function GetTermPublic(id) {
   return get(`/api/fn-booking/appointments/term/${id}`);
@@ -50,7 +50,7 @@ export default class extends React.Component {
         <link rel="stylesheet" href="/static/css/styles.css" />
 
         <div className="calendar-container">
-          <WidgetComponent paymentTab={false} />
+          <ReactBooking paymentTab={false} />
         </div>
       </html>
     );
