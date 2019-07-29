@@ -18,6 +18,11 @@ export class NavLink extends Component {
   content() {
     return (
       <>
+        {this.props.backUrl && (
+          <Link className="back-btn" to={this.props.backUrl}>
+            <i className="icon icon-chevron-left" />
+          </Link>
+        )}
         <i className={'icon ' + this.props.icon} />
         <span>{this.props.label}</span>
       </>
@@ -27,12 +32,16 @@ export class NavLink extends Component {
   render() {
     if (this.props.pathname === this.props.to) {
       return (
-        <span className={this.props.pathname === this.props.to ? 'active' : ''}>
-          {this.content()}
-        </span>
+        <li className={this.props.pathname === this.props.to ? 'active' : ''}>
+          <span>{this.content()}</span>
+        </li>
       );
     }
-    return <Link to={this.props.to}>{this.content()}</Link>;
+    return (
+      <li>
+        <Link to={this.props.to}>{this.content()}</Link>
+      </li>
+    );
   }
 }
 
@@ -90,36 +99,33 @@ export class WidgetComponent extends Component {
             <div className="campagin-wrapper">
               <div className="navigation-path">
                 <ul>
-                  <li>
-                    <NavLink
-                      label="Select Date"
-                      icon="icon-calendar"
-                      to="/"
-                      pathname={location.pathname}
-                    />
-                  </li>
-                  <li>
-                    <NavLink
-                      label="Attendance Information"
-                      icon="icon-user"
-                      to="/personel-information"
-                      pathname={location.pathname}
-                    />
-                  </li>
+                  <NavLink
+                    label="Select Date"
+                    icon="icon-calendar"
+                    to="/"
+                    pathname={location.pathname}
+                  />
+                  <NavLink
+                    label="Attendance Information"
+                    icon="icon-user"
+                    to="/personel-information"
+                    backUrl="/"
+                    pathname={location.pathname}
+                  />
                   {this.props.paymentTab ? (
-                    <li>
-                      <i className="icon icon-credit-card" />
-                      <span>Payment Page</span>
-                    </li>
-                  ) : null}
-                  <li>
                     <NavLink
-                      label="Final Status"
-                      icon="icon-award"
-                      to="/final-status"
+                      label="Payment Page"
+                      icon="icon icon-credit-card"
+                      to=""
                       pathname={location.pathname}
                     />
-                  </li>
+                  ) : null}
+                  <NavLink
+                    label="Final Status"
+                    icon="icon-award"
+                    to="/final-status"
+                    pathname={location.pathname}
+                  />
                 </ul>
               </div>
 

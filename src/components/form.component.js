@@ -175,12 +175,13 @@ export class FormComponent extends Component {
             </div>
           </div>
           <div className="button-wrapper d-flex flex-end">
-            <button
+            <input
+              type="button"
               onClick={() => this.previousStep()}
               className="btn btn-default"
-            >
-              Previous Step
-            </button>
+              value="Previous Step"
+            />
+
             <button type="submit" className="btn btn-primary">
               Next Step
             </button>
