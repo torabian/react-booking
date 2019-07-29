@@ -5,7 +5,7 @@ import { WidgetComponent } from '../../components/widget.component';
 const exampleCode = `<WidgetComponent
   title="Booking"
   description="Setup your booking"
-  historyType="browser"
+  historyType="memory"
   paymentMethods={{ cash: true, online: false }}
   appointments={[
     {
@@ -61,7 +61,7 @@ export class GettingStarted extends React.Component {
         <WidgetComponent
           title="Booking"
           description="Setup your booking"
-          historyType="browser"
+          historyType="memory"
           paymentMethods={{ cash: true, online: false }}
           appointments={[
             {
