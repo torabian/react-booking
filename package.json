@@ -25,6 +25,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "build:docs": "REACT_APP_BASENAME=\"/documentation/\" PUBLIC_URL=\"/documentation/\" react-scripts build",
     "build": "react-scripts build",
     "css": " node-sass src/assets/css/styles.scss -o static/css",
     "test": "react-scripts test",
