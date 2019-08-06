@@ -11,6 +11,10 @@ app.prepare().then(() => {
     baseUrl: req.baseUrl
   });
 
+  server.get('/book/:id', (req, res) => {
+    return app.render(req, res, '/index', { ...query(req) });
+  });
+
   server.get('*', (req, res) => {
     return app.render(req, res, req.url, { ...query(req) });
   });
