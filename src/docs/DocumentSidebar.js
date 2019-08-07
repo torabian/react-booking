@@ -2,19 +2,41 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export class DocumentSidebar extends React.Component {
+  closeMenu() {
+    if (this.props.onClickClose) {
+      this.props.onClickClose();
+    }
+  }
+
   render() {
     return (
       <div className="document-sidebar">
-        <div className="document-title">React-booking &trade;</div>
+        <div className="document-sidebar-title-wrappper">
+          <div className="document-title">React-booking &trade;</div>
+          <button onClick={() => this.closeMenu()}>
+            <i className="icon icon-close" />
+            <span>CLOSE</span>
+          </button>
+        </div>
+
         <ul className="menu-items">
           <li>
-            <Link to="/">Installation & Demo</Link>
+            <Link onClick={() => this.closeMenu()} to="/">
+              <i className="icon icon-getting-started" />
+              Installation & Demo
+            </Link>
           </li>
           <li>
-            <Link to="/on-submit-props">Submit call back</Link>
+            <Link onClick={() => this.closeMenu()} to="/on-submit-props">
+              <i className="icon icon-sending-data" />
+              Submit call back
+            </Link>
           </li>
           <li>
-            <Link to="/payment-methods">Payment methods</Link>
+            <Link onClick={() => this.closeMenu()} to="/payment-methods">
+              <i className="icon icon-credit-card" />
+              Payment methods
+            </Link>
           </li>
         </ul>
       </div>

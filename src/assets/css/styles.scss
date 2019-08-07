@@ -90,10 +90,13 @@ body {
       .appointment-time {
         border-color: transparent;
         background: #888;
-        color: #fff;
+        color: #fff !important;
         padding: 15px 5px;
         border-radius: 5px;
         width: 50%;
+        > span {
+          color: #fff !important;
+        }
       }
       .appointment-confirm {
         right: 0;
@@ -109,8 +112,8 @@ body {
   margin-right: -10px;
   margin-bottom: 50px;
   ul {
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    padding: 0 !important;
     position: relative;
     height: 55px;
     li {
