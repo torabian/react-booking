@@ -4674,7 +4674,13 @@ function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(AppointmentInformationComponent, [{
     key: "render",
     value: function render() {
+      var _this = this;
+
       var user = this.props.user;
+      user = user.find(function (x) {
+        return x.module_id === _this.props.module_id;
+      });
+      console.log('#12', user);
 
       if (!user || !user.slotId) {
         return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null);
@@ -4807,7 +4813,7 @@ function (_Component) {
         slotTime: "".concat(moment__WEBPACK_IMPORTED_MODULE_7___default()(slot.start).format('HH:mm'), " - ").concat(moment__WEBPACK_IMPORTED_MODULE_7___default()(slot.end).format('HH:mm')),
         slotPrice: slot.price ? "".concat(slot.price.amount, " ").concat(slot.price.curr) : null
       };
-      Object(_store__WEBPACK_IMPORTED_MODULE_8__["setAppointment"])(data);
+      Object(_store__WEBPACK_IMPORTED_MODULE_8__["setAppointment"])(this.props.module_id, data);
       this.props.history.push('/personel-information');
     }
   }, {
@@ -5051,6 +5057,7 @@ function (_Component) {
       loading: false,
       response: null,
       form: {
+        module_id: _this.props.module_id,
         customer_fullname: null,
         customer_email: null,
         customer_phone: null,
@@ -5066,13 +5073,12 @@ function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(FormComponent, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log('@dd', this.props);
       this.setState({
         response: this.props.response
       });
 
       if (this.props.response) {
-        Object(_store__WEBPACK_IMPORTED_MODULE_8__["setAppointment"])(this.props.response.form);
+        Object(_store__WEBPACK_IMPORTED_MODULE_8__["setAppointment"])(this.props.response.form.module_id, this.props.response.form);
         this.props.history.push('/final-status');
         this.setState({
           loading: false
@@ -5116,7 +5122,7 @@ function (_Component) {
         });
 
         if (this.props.onFormSubmit) {
-          var store_data = Object(_store__WEBPACK_IMPORTED_MODULE_8__["getAppointment"])();
+          var store_data = Object(_store__WEBPACK_IMPORTED_MODULE_8__["getAppointment"])(this.props.module_id);
 
           var form_data = Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, this.state.form, {
             id: store_data.slotId
@@ -5420,11 +5426,12 @@ function (_Component) {
 /*!*****************************************!*\
   !*** ./src/components/react-booking.js ***!
   \*****************************************/
-/*! exports provided: NavLink, ReactBooking */
+/*! exports provided: uuidv4, NavLink, ReactBooking */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "uuidv4", function() { return uuidv4; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavLink", function() { return NavLink; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReactBooking", function() { return ReactBooking; });
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
@@ -5450,6 +5457,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _final_status_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./final-status.component */ "./src/components/final-status.component.js");
 /* harmony import */ var _appointment_information_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./appointment-information.component */ "./src/components/appointment-information.component.js");
 /* harmony import */ var _payment_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./payment.component */ "./src/components/payment.component.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./store */ "./src/components/store.js");
 
 
 
@@ -5468,6 +5476,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+function uuidv4() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    var r = Math.random() * 16 | 0,
+        v = c == 'x' ? r : r & 0x3 | 0x8;
+    return v.toString(16);
+  });
+}
 var NavLink =
 /*#__PURE__*/
 function (_Component) {
@@ -5520,6 +5536,7 @@ function (_Component2) {
 
     _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(ReactBooking).call(this, props));
     _this.state = {
+      module_id: uuidv4(),
       campaign: null,
       loaded: false,
       form: {
@@ -5576,6 +5593,28 @@ function (_Component2) {
       return componentDidMount;
     }()
   }, {
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      Object(_store__WEBPACK_IMPORTED_MODULE_18__["addAppointment"])({
+        module_id: this.state.module_id,
+        slotId: null,
+        slotDate: null,
+        slotTime: null,
+        slotPrice: null,
+        slotCapacity: null,
+        customer_fullname: null,
+        customer_email: null,
+        customer_phone: null,
+        customer_address: null,
+        customer_zipCode: null,
+        customer_location: null,
+        customer_message: null
+      });
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {}
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -5614,6 +5653,7 @@ function (_Component2) {
           }))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
             className: "text-center"
           }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h1", null, _this2.props.title), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("p", null, _this2.props.description)), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_appointment_information_component__WEBPACK_IMPORTED_MODULE_16__["default"], {
+            module_id: _this2.state.module_id,
             user: {}
           }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_14__["TransitionGroup"], null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_14__["CSSTransition"], {
             key: location.key,
@@ -5626,6 +5666,7 @@ function (_Component2) {
             exact: true,
             component: function component(props) {
               return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_appointment_component__WEBPACK_IMPORTED_MODULE_11__["AppointmentComponent"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+                module_id: _this2.state.module_id,
                 campaign: campaign,
                 appointments: _this2.props.appointments
               }));
@@ -5635,6 +5676,7 @@ function (_Component2) {
             exact: true,
             component: function component(props) {
               return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_form_component__WEBPACK_IMPORTED_MODULE_13__["FormComponent"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+                module_id: _this2.state.module_id,
                 onFormSubmit: _this2.props.onFormSubmit,
                 response: _this2.props.response
               }));
@@ -5800,40 +5842,75 @@ function rxProp() {
 /*!*********************************!*\
   !*** ./src/components/store.js ***!
   \*********************************/
-/*! exports provided: Store, setAppointment, getAppointment */
+/*! exports provided: Store, addAppointment, setAppointment, getAppointment */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Store", function() { return Store; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addAppointment", function() { return addAppointment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setAppointment", function() { return setAppointment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAppointment", function() { return getAppointment; });
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "rxjs");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(rxjs__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_get_iterator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/get-iterator */ "./node_modules/@babel/runtime-corejs2/core-js/get-iterator.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_get_iterator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_get_iterator__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "rxjs");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(rxjs__WEBPACK_IMPORTED_MODULE_3__);
+
+
 
 
 var Store = {
-  appointment: new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]({
-    slotId: null,
-    slotDate: null,
-    slotTime: null,
-    slotPrice: null,
-    slotCapacity: null,
-    customer_fullname: null,
-    customer_email: null,
-    customer_phone: null,
-    customer_address: null,
-    customer_zipCode: null,
-    customer_location: null,
-    customer_message: null
-  })
+  appointment: new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]([])
 };
-function setAppointment(data) {
-  Store.appointment.next(Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, Store.appointment.value, data));
+function addAppointment(data) {
+  var _current = Store.appointment.value;
+
+  var _update = [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_current), [data]);
+
+  Store.appointment.next(_update);
 }
-function getAppointment() {
-  return Store.appointment.value;
+function setAppointment(module_id, data) {
+  console.log(module_id, data);
+  var newvalue = [];
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = _babel_runtime_corejs2_core_js_get_iterator__WEBPACK_IMPORTED_MODULE_1___default()(Store.appointment.value), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var _v = _step.value;
+
+      if (_v.module_id === module_id) {
+        _v = Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({
+          module_id: module_id
+        }, _v, data);
+      }
+
+      newvalue.push(_v);
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return != null) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  Store.appointment.next(newvalue);
+}
+function getAppointment(module_id) {
+  return Store.appointment.value.find(function (x) {
+    return x.module_id === module_id;
+  });
 }
 
 /***/ }),

@@ -9,6 +9,7 @@ export class FormComponent extends Component {
       loading: false,
       response: null,
       form: {
+        module_id: this.props.module_id,
         customer_fullname: null,
         customer_email: null,
         customer_phone: null,
@@ -25,7 +26,10 @@ export class FormComponent extends Component {
       response: this.props.response
     });
     if (this.props.response) {
-      setAppointment(this.props.response.form);
+      setAppointment(
+        this.props.response.form.module_id,
+        this.props.response.form
+      );
       this.props.history.push('/final-status');
       this.setState({
         loading: false
@@ -64,7 +68,7 @@ export class FormComponent extends Component {
         response: {}
       });
       if (this.props.onFormSubmit) {
-        const store_data = getAppointment();
+        const store_data = getAppointment(this.props.module_id);
         const form_data = {
           ...this.state.form,
           id: store_data.slotId

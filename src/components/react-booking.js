@@ -15,6 +15,15 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { FinalStatusComponent } from './final-status.component';
 import AppointmentInformationComponent from './appointment-information.component';
 import { PaymentComponent } from './payment.component';
+import { Store, addAppointment } from './store';
+
+export function uuidv4() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = (Math.random() * 16) | 0,
+      v = c == 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
 
 export class NavLink extends Component {
   content() {
@@ -70,6 +79,7 @@ export class ReactBooking extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      module_id: uuidv4(),
       campaign: null,
       loaded: false,
       form: {
@@ -95,6 +105,26 @@ export class ReactBooking extends Component {
       loaded: true
     });
   }
+
+  componentWillMount() {
+    addAppointment({
+      module_id: this.state.module_id,
+      slotId: null,
+      slotDate: null,
+      slotTime: null,
+      slotPrice: null,
+      slotCapacity: null,
+      customer_fullname: null,
+      customer_email: null,
+      customer_phone: null,
+      customer_address: null,
+      customer_zipCode: null,
+      customer_location: null,
+      customer_message: null
+    });
+  }
+
+  componentWillUnmount() {}
 
   render() {
     const { campaign } = this.state;
@@ -144,7 +174,10 @@ export class ReactBooking extends Component {
                 <h1>{this.props.title}</h1>
                 <p>{this.props.description}</p>
               </div>
-              <AppointmentInformationComponent user={{}} />
+              <AppointmentInformationComponent
+                module_id={this.state.module_id}
+                user={{}}
+              />
               <TransitionGroup>
                 <CSSTransition
                   key={location.key}
@@ -158,6 +191,7 @@ export class ReactBooking extends Component {
                       component={props => (
                         <AppointmentComponent
                           {...props}
+                          module_id={this.state.module_id}
                           campaign={campaign}
                           appointments={this.props.appointments}
                         />
@@ -169,6 +203,7 @@ export class ReactBooking extends Component {
                       component={props => (
                         <FormComponent
                           {...props}
+                          module_id={this.state.module_id}
                           onFormSubmit={this.props.onFormSubmit}
                           response={this.props.response}
                         />

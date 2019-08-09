@@ -33,7 +33,7 @@ export class AppointmentComponent extends Component {
       ).format('HH:mm')}`,
       slotPrice: slot.price ? `${slot.price.amount} ${slot.price.curr}` : null
     };
-    setAppointment(data);
+    setAppointment(this.props.module_id, data);
     this.props.history.push('/personel-information');
   }
 

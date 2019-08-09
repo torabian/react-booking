@@ -5,7 +5,9 @@ import { rxProp } from './rxprop';
 
 class AppointmentInformationComponent extends Component {
   render() {
-    const { user } = this.props;
+    let { user } = this.props;
+    user = user.find(x => x.module_id === this.props.module_id);
+    console.log('#12', user);
     if (!user || !user.slotId) {
       return <></>;
     }
