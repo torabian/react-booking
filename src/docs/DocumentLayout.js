@@ -5,6 +5,7 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import { OnSubmit } from './pages/OnSubmit';
 import { PaymentDoc } from './pages/PaymentDoc';
 import { DocumentNavbar } from './DocumentNavbar';
+import { CreateAccountDoc } from './pages/CreateAccount';
 // import { BusinessContact } from './pages/BusinessContact';
 // import { BookingAndReservation } from './pages/Booking';
 
@@ -58,6 +59,11 @@ export class DocumentLayout extends React.Component {
               <Route exact path="/" component={GettingStarted} />
               <Route exact path="/on-submit-props" component={OnSubmit} />
               <Route exact path="/payment-methods" component={PaymentDoc} />
+              <Route
+                exact
+                path="/create-personal-booking-app"
+                component={CreateAccountDoc}
+              />
             </div>
           </div>
         </div>

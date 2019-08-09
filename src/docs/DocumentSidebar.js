@@ -38,6 +38,15 @@ export class DocumentSidebar extends React.Component {
               Payment methods
             </Link>
           </li>
+          <li>
+            <Link
+              onClick={() => this.closeMenu()}
+              to="/create-personal-booking-app"
+            >
+              <i className="icon icon-credit-card" />
+              Create personal booking calendar
+            </Link>
+          </li>
         </ul>
       </div>
     );
