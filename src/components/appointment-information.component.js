@@ -11,36 +11,36 @@ class AppointmentInformationComponent extends Component {
     }
     return (
       <div className="selected-appointment-information">
-        {user.fullName && (
+        {user.customer_fullname && (
           <div>
             <i className="icon icon-user" />
             <span className="selected-appointment-information-title">
               Fullname:
             </span>
             <span className="selected-appointment-information-value">
-              {user.fullName}
+              {user.customer_fullname}
             </span>
           </div>
         )}
-        {user.email && (
+        {user.customer_email && (
           <div>
             <i className="icon icon-at-sign" />
             <span className="selected-appointment-information-title">
               Email:
             </span>
             <span className="selected-appointment-information-value">
-              {user.email}
+              {user.customer_email}
             </span>
           </div>
         )}
-        {user.phoneNumber && (
+        {user.customer_phone && (
           <div>
             <i className="icon icon-phone" />
             <span className="selected-appointment-information-title">
               Phone number:
             </span>
             <span className="selected-appointment-information-value">
-              {user.phoneNumber}
+              {user.customer_phone}
             </span>
           </div>
         )}

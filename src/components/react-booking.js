@@ -73,11 +73,13 @@ export class ReactBooking extends Component {
       campaign: null,
       loaded: false,
       form: {
-        fullname: null,
-        email: null,
-        phone: null,
-        address: null,
-        zipCode: null
+        customer_fullname: null,
+        customer_email: null,
+        customer_phone: null,
+        customer_address: null,
+        customer_zipCode: null,
+        customer_location: null,
+        customer_message: null
       }
     };
   }

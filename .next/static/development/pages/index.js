@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/index.js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\index.js"],{
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/array/from.js":
 /*!*******************************************************************!*\
@@ -41,6 +41,17 @@ module.exports = __webpack_require__(/*! core-js/library/fn/get-iterator */ "./n
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! core-js/library/fn/is-iterable */ "./node_modules/@babel/runtime-corejs2/node_modules/core-js/library/fn/is-iterable.js");
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/json/stringify */ "./node_modules/@babel/runtime-corejs2/node_modules/core-js/library/fn/json/stringify.js");
 
 /***/ }),
 
@@ -1046,6 +1057,22 @@ module.exports = __webpack_require__(/*! ../modules/core.get-iterator */ "./node
 __webpack_require__(/*! ../modules/web.dom.iterable */ "./node_modules/@babel/runtime-corejs2/node_modules/core-js/library/modules/web.dom.iterable.js");
 __webpack_require__(/*! ../modules/es6.string.iterator */ "./node_modules/@babel/runtime-corejs2/node_modules/core-js/library/modules/es6.string.iterator.js");
 module.exports = __webpack_require__(/*! ../modules/core.is-iterable */ "./node_modules/@babel/runtime-corejs2/node_modules/core-js/library/modules/core.is-iterable.js");
+
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/node_modules/core-js/library/fn/json/stringify.js":
+/*!***********************************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/node_modules/core-js/library/fn/json/stringify.js ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var core = __webpack_require__(/*! ../../modules/_core */ "./node_modules/@babel/runtime-corejs2/node_modules/core-js/library/modules/_core.js");
+var $JSON = core.JSON || (core.JSON = { stringify: JSON.stringify });
+module.exports = function stringify(it) { // eslint-disable-line no-unused-vars
+  return $JSON.stringify.apply($JSON, arguments);
+};
 
 
 /***/ }),
@@ -34402,10 +34429,10 @@ exports.formatWithValidation = formatWithValidation;
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Flegion%2Fprojects%2Fbooking-widget%2Fpages%2Findex.js!./":
-/*!*****************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Flegion%2Fprojects%2Fbooking-widget%2Fpages%2Findex.js ***!
-  \*****************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=D%3A%5CReact%5Creact-booking%5Cpages%5Cindex.js!./":
+/*!************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=D%3A%5CReact%5Creact-booking%5Cpages%5Cindex.js ***!
+  \************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -36017,12 +36044,12 @@ module.exports = function(module) {
 
 /***/ "./node_modules/object-assign/index.js":
 /*!***************************************************************************************************!*\
-  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_829b10deddf10e1653a8 ***!
+  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_7aff549c98b978433226 ***!
   \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_829b10deddf10e1653a8 */ "dll-reference dll_829b10deddf10e1653a8"))("./node_modules/object-assign/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_7aff549c98b978433226 */ "dll-reference dll_7aff549c98b978433226"))("./node_modules/object-assign/index.js");
 
 /***/ }),
 
@@ -38644,14 +38671,209 @@ Popper.Defaults = Defaults;
 
 /***/ }),
 
+/***/ "./node_modules/process/browser.js":
+/*!*****************************************!*\
+  !*** ./node_modules/process/browser.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+
+/***/ }),
+
 /***/ "./node_modules/prop-types/checkPropTypes.js":
 /*!*********************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_829b10deddf10e1653a8 ***!
+  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_7aff549c98b978433226 ***!
   \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_829b10deddf10e1653a8 */ "dll-reference dll_829b10deddf10e1653a8"))("./node_modules/prop-types/checkPropTypes.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_7aff549c98b978433226 */ "dll-reference dll_7aff549c98b978433226"))("./node_modules/prop-types/checkPropTypes.js");
 
 /***/ }),
 
@@ -39286,12 +39508,12 @@ if (true) {
 
 /***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
 /*!*******************************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_829b10deddf10e1653a8 ***!
+  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_7aff549c98b978433226 ***!
   \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_829b10deddf10e1653a8 */ "dll-reference dll_829b10deddf10e1653a8"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_7aff549c98b978433226 */ "dll-reference dll_7aff549c98b978433226"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
 
 /***/ }),
 
@@ -42848,12 +43070,12 @@ var PRESELECT_CHANGE_VIA_NAVIGATE = "navigate";
 
 /***/ "./node_modules/react-dom/index.js":
 /*!***********************************************************************************************!*\
-  !*** delegated ./node_modules/react-dom/index.js from dll-reference dll_829b10deddf10e1653a8 ***!
+  !*** delegated ./node_modules/react-dom/index.js from dll-reference dll_7aff549c98b978433226 ***!
   \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_829b10deddf10e1653a8 */ "dll-reference dll_829b10deddf10e1653a8"))("./node_modules/react-dom/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_7aff549c98b978433226 */ "dll-reference dll_7aff549c98b978433226"))("./node_modules/react-dom/index.js");
 
 /***/ }),
 
@@ -47409,12 +47631,12 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 
 /***/ "./node_modules/react/index.js":
 /*!*******************************************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference dll_829b10deddf10e1653a8 ***!
+  !*** delegated ./node_modules/react/index.js from dll-reference dll_7aff549c98b978433226 ***!
   \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_829b10deddf10e1653a8 */ "dll-reference dll_829b10deddf10e1653a8"))("./node_modules/react/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_7aff549c98b978433226 */ "dll-reference dll_7aff549c98b978433226"))("./node_modules/react/index.js");
 
 /***/ }),
 
@@ -54559,26 +54781,31 @@ module.exports = warning;
 /*!************************!*\
   !*** ./pages/index.js ***!
   \************************/
-/*! exports provided: GetTermPublic, default */
+/*! exports provided: GetTermPublic, ConfirmBooking, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetTermPublic", function() { return GetTermPublic; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmBooking", function() { return ConfirmBooking; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _class; });
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
-/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _pixelplux_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pixelplux-common */ "./pages/pixelplux-common.js");
-/* harmony import */ var _src_components_widget_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../src/components/widget.component */ "./src/components/widget.component.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_get_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/get-iterator */ "./node_modules/@babel/runtime-corejs2/core-js/get-iterator.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_get_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_get_iterator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _pixelplux_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pixelplux-common */ "./pages/pixelplux-common.js");
+/* harmony import */ var _src_components_react_booking__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../src/components/react-booking */ "./src/components/react-booking.js");
+/* harmony import */ var _network__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./network */ "./pages/network.js");
+
 
 
 
@@ -54599,19 +54826,20 @@ var _class2;
 
 
 
+
 function GetTermPublic(_x) {
   return _GetTermPublic.apply(this, arguments);
 }
 
 function _GetTermPublic() {
-  _GetTermPublic = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__["default"])(
+  _GetTermPublic = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_8__["default"])(
   /*#__PURE__*/
-  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_6___default.a.mark(function _callee(id) {
-    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_6___default.a.wrap(function _callee$(_context) {
+  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_7___default.a.mark(function _callee(id) {
+    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_7___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            return _context.abrupt("return", get("/api/fn-booking/appointments/term/".concat(id)));
+            return _context.abrupt("return", Object(_network__WEBPACK_IMPORTED_MODULE_12__["get"])("/api/fn-booking/appointments/".concat(id)));
 
           case 1:
           case "end":
@@ -54623,36 +54851,59 @@ function _GetTermPublic() {
   return _GetTermPublic.apply(this, arguments);
 }
 
-var _class = Object(_pixelplux_common__WEBPACK_IMPORTED_MODULE_9__["acceptLang"])(_class2 =
+function ConfirmBooking(_x2) {
+  return _ConfirmBooking.apply(this, arguments);
+}
+
+function _ConfirmBooking() {
+  _ConfirmBooking = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_8__["default"])(
+  /*#__PURE__*/
+  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_7___default.a.mark(function _callee2(data) {
+    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_7___default.a.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            return _context2.abrupt("return", Object(_network__WEBPACK_IMPORTED_MODULE_12__["post"])('/api/fn-booking/book/' + data.id, data));
+
+          case 1:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+  return _ConfirmBooking.apply(this, arguments);
+}
+
+var _class = Object(_pixelplux_common__WEBPACK_IMPORTED_MODULE_10__["acceptLang"])(_class2 =
 /*#__PURE__*/
 function (_React$Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(_class2, _React$Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__["default"])(_class2, _React$Component);
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_4__["default"])(_class2, null, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__["default"])(_class2, null, [{
     key: "getInitialProps",
     value: function () {
-      var _getInitialProps = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__["default"])(
+      var _getInitialProps = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_8__["default"])(
       /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_6___default.a.mark(function _callee2(_ref) {
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_7___default.a.mark(function _callee3(_ref) {
         var query, inProps;
-        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_6___default.a.wrap(function _callee2$(_context2) {
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_7___default.a.wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
                 query = _ref.query;
-                inProps = Object(_pixelplux_common__WEBPACK_IMPORTED_MODULE_9__["initialProps"])(query);
-                console.log(inProps);
-                return _context2.abrupt("return", Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, inProps));
+                inProps = Object(_pixelplux_common__WEBPACK_IMPORTED_MODULE_10__["initialProps"])(query);
+                return _context3.abrupt("return", Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, inProps));
 
-              case 4:
+              case 3:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2);
+        }, _callee3);
       }));
 
-      function getInitialProps(_x2) {
+      function getInitialProps(_x3) {
         return _getInitialProps.apply(this, arguments);
       }
 
@@ -54663,61 +54914,110 @@ function (_React$Component) {
   function _class2(props) {
     var _this;
 
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, _class2);
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, _class2);
 
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(_class2).call(this, props));
-    _this.state = {};
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(_class2).call(this, props));
+    _this.state = {
+      response: null,
+      term: null
+    };
     return _this;
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_4__["default"])(_class2, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__["default"])(_class2, [{
     key: "componentDidMount",
     value: function () {
-      var _componentDidMount = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__["default"])(
+      var _componentDidMount = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_8__["default"])(
       /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_6___default.a.mark(function _callee3() {
-        var id, term, res;
-        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_6___default.a.wrap(function _callee3$(_context3) {
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_7___default.a.mark(function _callee4() {
+        var id, term, res, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, slot;
+
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_7___default.a.wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
                 id = this.props.router.query.id;
                 term = null;
 
                 if (!id) {
-                  _context3.next = 12;
+                  _context4.next = 31;
                   break;
                 }
 
-                _context3.prev = 3;
-                _context3.next = 6;
+                _context4.prev = 3;
+                _context4.next = 6;
                 return GetTermPublic(id);
 
               case 6:
-                res = _context3.sent;
+                res = _context4.sent;
 
-                if (GetEntity(res)) {
-                  term = GetEntity(res);
+                if (Object(_pixelplux_common__WEBPACK_IMPORTED_MODULE_10__["GetEntity"])(res)) {
+                  term = Object(_pixelplux_common__WEBPACK_IMPORTED_MODULE_10__["GetEntity"])(res);
                 }
 
-                _context3.next = 12;
+                _iteratorNormalCompletion = true;
+                _didIteratorError = false;
+                _iteratorError = undefined;
+                _context4.prev = 11;
+
+                for (_iterator = _babel_runtime_corejs2_core_js_get_iterator__WEBPACK_IMPORTED_MODULE_0___default()(term.slots); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                  slot = _step.value;
+                  slot.start = new Date(slot.start);
+                  slot.end = new Date(slot.end);
+                }
+
+                _context4.next = 19;
                 break;
 
-              case 10:
-                _context3.prev = 10;
-                _context3.t0 = _context3["catch"](3);
+              case 15:
+                _context4.prev = 15;
+                _context4.t0 = _context4["catch"](11);
+                _didIteratorError = true;
+                _iteratorError = _context4.t0;
 
-              case 12:
+              case 19:
+                _context4.prev = 19;
+                _context4.prev = 20;
+
+                if (!_iteratorNormalCompletion && _iterator.return != null) {
+                  _iterator.return();
+                }
+
+              case 22:
+                _context4.prev = 22;
+
+                if (!_didIteratorError) {
+                  _context4.next = 25;
+                  break;
+                }
+
+                throw _iteratorError;
+
+              case 25:
+                return _context4.finish(22);
+
+              case 26:
+                return _context4.finish(19);
+
+              case 27:
+                _context4.next = 31;
+                break;
+
+              case 29:
+                _context4.prev = 29;
+                _context4.t1 = _context4["catch"](3);
+
+              case 31:
                 this.setState({
                   term: term
                 });
 
-              case 13:
+              case 32:
               case "end":
-                return _context3.stop();
+                return _context4.stop();
             }
           }
-        }, _callee3, this, [[3, 10]]);
+        }, _callee4, this, [[3, 29], [11, 15, 19, 27], [20,, 22, 26]]);
       }));
 
       function componentDidMount() {
@@ -54727,19 +55027,159 @@ function (_React$Component) {
       return componentDidMount;
     }()
   }, {
+    key: "sendRequestToServer",
+    value: function () {
+      var _sendRequestToServer = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_8__["default"])(
+      /*#__PURE__*/
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_7___default.a.mark(function _callee5(e) {
+        var id, data, response;
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_7___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                id = this.props.router.query.id;
+                data = Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, e, {
+                  term: id
+                });
+                _context5.next = 5;
+                return ConfirmBooking(data);
+
+              case 5:
+                response = _context5.sent;
+
+                if (!response) {
+                  alert('You are not connected to the internet.');
+                  this.setState({
+                    response: null
+                  });
+                }
+
+                response.form = e;
+                this.setState({
+                  response: response
+                });
+                _context5.next = 16;
+                break;
+
+              case 11:
+                _context5.prev = 11;
+                _context5.t0 = _context5["catch"](0);
+                alert('Sorry there was an error. Try again');
+                this.setState({
+                  response: null
+                });
+                console.error(_context5.t0);
+
+              case 16:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this, [[0, 11]]);
+      }));
+
+      function sendRequestToServer(_x4) {
+        return _sendRequestToServer.apply(this, arguments);
+      }
+
+      return sendRequestToServer;
+    }()
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("link", {
+      var _this2 = this;
+
+      var term = this.state.term;
+      return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("html", null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("link", {
         rel: "stylesheet",
-        href: "/static/App.css"
-      }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_src_components_widget_component__WEBPACK_IMPORTED_MODULE_10__["WidgetComponent"], null));
+        href: "/static/css/styles.css"
+      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
+        className: "calendar-container"
+      }, term && react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_src_components_react_booking__WEBPACK_IMPORTED_MODULE_11__["ReactBooking"], {
+        title: term.term.title,
+        description: term.term.description,
+        onFormSubmit: function onFormSubmit(e) {
+          return _this2.sendRequestToServer(e);
+        },
+        response: this.state.response,
+        paymentTab: false,
+        appointments: term.slots
+      })));
     }
   }]);
 
   return _class2;
-}(react__WEBPACK_IMPORTED_MODULE_8___default.a.Component)) || _class2;
+}(react__WEBPACK_IMPORTED_MODULE_9___default.a.Component)) || _class2;
 
 
+
+/***/ }),
+
+/***/ "./pages/network.js":
+/*!**************************!*\
+  !*** ./pages/network.js ***!
+  \**************************/
+/*! exports provided: remove, post, get */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "remove", function() { return remove; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "post", function() { return post; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "get", function() { return get; });
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/json/stringify */ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ssr_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ssr-store */ "./pages/ssr-store.js");
+
+
+var URL = process.env.REACT_APP_API || 'https://calendar.pixelplux.com';
+function remove(affix, data) {
+  return fetch(URL + affix, {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'accept-lang': _ssr_store__WEBPACK_IMPORTED_MODULE_1__["SSRStore"].localisation.value
+    },
+    method: 'DELETE',
+    body: _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(data)
+  }).then(function (res) {
+    return res.json();
+  }).catch(function (res) {
+    console.error('error', res);
+  });
+}
+function post(affix, data) {
+  return fetch(URL + affix, {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'accept-lang': _ssr_store__WEBPACK_IMPORTED_MODULE_1__["SSRStore"].localisation.value
+    },
+    method: 'POST',
+    body: _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(data)
+  }).then(function (res) {
+    return res.json();
+  }).catch(function (res) {
+    console.error('error', res);
+  });
+}
+function get(affix, data) {
+  return fetch(URL + affix, {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'accept-lang': _ssr_store__WEBPACK_IMPORTED_MODULE_1__["SSRStore"].localisation.value
+    },
+    method: 'GET',
+    body: _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(data)
+  }).then(function (res) {
+    return res.json();
+  }).catch(function (res) {
+    console.error('error', res);
+  });
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -55170,7 +55610,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./store */ "./src/components/store.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _pages_pixelplux_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../pages/pixelplux-common */ "./pages/pixelplux-common.js");
+/* harmony import */ var _rxprop__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./rxprop */ "./src/components/rxprop.js");
 
 
 
@@ -55203,25 +55643,25 @@ function (_Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "selected-appointment-information"
-      }, user.fullName && react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("i", {
+      }, user.customer_fullname && react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("i", {
         className: "icon icon-user"
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
         className: "selected-appointment-information-title"
       }, "Fullname:"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
         className: "selected-appointment-information-value"
-      }, user.fullName)), user.email && react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("i", {
+      }, user.customer_fullname)), user.customer_email && react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("i", {
         className: "icon icon-at-sign"
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
         className: "selected-appointment-information-title"
       }, "Email:"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
         className: "selected-appointment-information-value"
-      }, user.email)), user.phoneNumber && react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("i", {
+      }, user.customer_email)), user.customer_phone && react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("i", {
         className: "icon icon-phone"
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
         className: "selected-appointment-information-title"
       }, "Phone number:"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
         className: "selected-appointment-information-value"
-      }, user.phoneNumber)), user.slotDate && react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("i", {
+      }, user.customer_phone)), user.slotDate && react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("i", {
         className: "icon icon-calendar"
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
         className: "selected-appointment-information-title"
@@ -55250,7 +55690,7 @@ function (_Component) {
   return AppointmentInformationComponent;
 }(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(_pages_pixelplux_common__WEBPACK_IMPORTED_MODULE_8__["rxProp"])({
+/* harmony default export */ __webpack_exports__["default"] = (Object(_rxprop__WEBPACK_IMPORTED_MODULE_8__["rxProp"])({
   user: _store__WEBPACK_IMPORTED_MODULE_6__["Store"].appointment
 })(AppointmentInformationComponent));
 
@@ -55474,6 +55914,21 @@ function (_Component) {
   }
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(FormInputComponent, [{
+    key: "findErrorMessage",
+    value: function findErrorMessage(field, response) {
+      if (response && response.error && response.error.errors) {
+        var $field = response.error.errors.find(function (error) {
+          return error.location === field;
+        });
+
+        if ($field) {
+          return $field.message;
+        }
+      }
+
+      return false;
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this = this;
@@ -55483,10 +55938,10 @@ function (_Component) {
           placeholder = _this$props.placeholder,
           icon = _this$props.icon;
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "booking-widget-input-group"
+        className: 'booking-widget-input-group' + (this.errorMessage || this.props.isValid ? ' warning' : '')
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "booking-widget-input-title"
-      }, icon.length > 0 && react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("i", {
+      }, icon && icon.length > 0 && react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("i", {
         className: 'icon ' + icon
       }), title), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("input", {
         className: "booking-widget-input",
@@ -55495,7 +55950,15 @@ function (_Component) {
         onInput: function onInput(e) {
           return _this.props.onChange(e.target.value);
         }
-      })),  false && false);
+      })), this.errorMessage && react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, this.errorMessage));
+    }
+  }, {
+    key: "errorMessage",
+    get: function get() {
+      var _this$props2 = this.props,
+          response = _this$props2.response,
+          name = _this$props2.name;
+      return this.findErrorMessage(name, response);
     }
   }]);
 
@@ -55514,15 +55977,17 @@ function (_Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormComponent", function() { return FormComponent; });
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _form_input_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./form-input.component */ "./src/components/form-input.component.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./store */ "./src/components/store.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _form_input_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./form-input.component */ "./src/components/form-input.component.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./store */ "./src/components/store.js");
+
 
 
 
@@ -55534,27 +55999,47 @@ __webpack_require__.r(__webpack_exports__);
 var FormComponent =
 /*#__PURE__*/
 function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(FormComponent, _Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(FormComponent, _Component);
 
   function FormComponent(props) {
     var _this;
 
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, FormComponent);
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, FormComponent);
 
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(FormComponent).call(this, props));
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(FormComponent).call(this, props));
     _this.state = {
+      loading: false,
+      response: null,
       form: {
-        fullName: null,
-        email: null,
-        phoneNumber: null,
-        address: null,
-        zipCode: null
+        customer_fullname: null,
+        customer_email: null,
+        customer_phone: null,
+        customer_address: null,
+        customer_zipCode: null,
+        customer_location: null,
+        customer_message: null
       }
     };
     return _this;
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(FormComponent, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(FormComponent, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log('@dd', this.props);
+      this.setState({
+        response: this.props.response
+      });
+
+      if (this.props.response) {
+        Object(_store__WEBPACK_IMPORTED_MODULE_8__["setAppointment"])(this.props.response.form);
+        this.props.history.push('/final-status');
+        this.setState({
+          loading: false
+        });
+      }
+    }
+  }, {
     key: "setFormState",
     value: function setFormState(name, value) {
       var form = this.state.form;
@@ -55570,84 +56055,169 @@ function (_Component) {
     }
   }, {
     key: "nextStep",
-    value: function nextStep() {
-      Object(_store__WEBPACK_IMPORTED_MODULE_7__["setAppointment"])(this.state.form);
-      this.props.history.push('/final-status');
+    value: function nextStep() {}
+  }, {
+    key: "onSubmit",
+    value: function onSubmit(e) {
+      e && e.preventDefault && e.preventDefault();
+      var validation = this.preValidator(this.state.form);
+
+      if (validation.length) {
+        this.setState({
+          response: {
+            error: {
+              errors: validation
+            }
+          }
+        });
+      } else {
+        this.setState({
+          response: {}
+        });
+
+        if (this.props.onFormSubmit) {
+          var store_data = Object(_store__WEBPACK_IMPORTED_MODULE_8__["getAppointment"])();
+
+          var form_data = Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, this.state.form, {
+            id: store_data.slotId
+          });
+
+          this.props.onFormSubmit(form_data);
+          this.setState({
+            loading: true
+          });
+        }
+      }
+    }
+  }, {
+    key: "preValidator",
+    value: function preValidator(form) {
+      var errors = [];
+
+      if (!form.customer_fullname) {
+        errors.push({
+          location: 'customer_fullname',
+          message: 'We need your full name.'
+        });
+      }
+
+      if (!form.customer_email) {
+        errors.push({
+          location: 'customer_email',
+          message: 'Please enter your email address.'
+        });
+      } else {
+        if (!/\S+@\S+\.\S+/.test(form.customer_email)) {
+          errors.push({
+            location: 'customer_email',
+            message: 'We need your email address in correct form (my.name@gmail.com)'
+          });
+        }
+      }
+
+      if (!form.customer_phone) {
+        errors.push({
+          location: 'customer_phone',
+          message: 'Please enter your phone number.'
+        });
+      } else {
+        if (!/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(form.customer_phone)) {
+          errors.push({
+            location: 'customer_phone',
+            message: 'Enter your phone number in correct format e.g +18182003004000'
+          });
+        }
+      }
+
+      return errors;
     }
   }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "form-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, this.state.loading && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "spinner-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        class: "spinner"
+      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, "Please wait ...")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("form", {
+        onSubmit: function onSubmit(e) {
+          return _this2.onSubmit(e);
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "d-flex flex-wrap"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "flex-1"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_form_input_component__WEBPACK_IMPORTED_MODULE_6__["FormInputComponent"], {
-        name: "fullName",
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_form_input_component__WEBPACK_IMPORTED_MODULE_7__["FormInputComponent"], {
+        name: "customer_fullname",
         title: "FULLNAME",
         icon: "icon-user",
+        response: this.state.response,
         onChange: function onChange(e) {
-          return _this2.setFormState('fullName', e);
+          return _this2.setFormState('customer_fullname', e);
         }
-      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "flex-1"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_form_input_component__WEBPACK_IMPORTED_MODULE_6__["FormInputComponent"], {
-        name: "eamil",
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_form_input_component__WEBPACK_IMPORTED_MODULE_7__["FormInputComponent"], {
+        name: "customer_email",
         title: "EMAIL",
         icon: "icon-at-sign",
+        response: this.state.response,
         onChange: function onChange(e) {
-          return _this2.setFormState('email', e);
+          return _this2.setFormState('customer_email', e);
         }
-      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "flex-1"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_form_input_component__WEBPACK_IMPORTED_MODULE_6__["FormInputComponent"], {
-        name: "phoneNumber",
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_form_input_component__WEBPACK_IMPORTED_MODULE_7__["FormInputComponent"], {
+        name: "customer_phone",
         title: "PHONE NUMBER",
         icon: "icon-phone",
+        response: this.state.response,
         onChange: function onChange(e) {
-          return _this2.setFormState('phoneNumber', e);
+          return _this2.setFormState('customer_phone', e);
         }
-      }))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "d-flex flex-wrap"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "flex-3"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_form_input_component__WEBPACK_IMPORTED_MODULE_6__["FormInputComponent"], {
-        name: "address",
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_form_input_component__WEBPACK_IMPORTED_MODULE_7__["FormInputComponent"], {
+        name: "customer_address",
         title: "ADDRESS (optional)",
         icon: "icon-map-pin",
+        response: this.state.response,
         onChange: function onChange(e) {
-          return _this2.setFormState('address', e);
+          return _this2.setFormState('customer_address', e);
         }
-      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "flex-1"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_form_input_component__WEBPACK_IMPORTED_MODULE_6__["FormInputComponent"], {
-        name: "zipCode",
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_form_input_component__WEBPACK_IMPORTED_MODULE_7__["FormInputComponent"], {
+        name: "customer_zipCode",
         title: "ZIP CODE (optional)",
         icon: "icon-map",
+        response: this.state.response,
         onChange: function onChange(e) {
-          return _this2.setFormState('zipCode', e);
+          return _this2.setFormState('customer_zipCode', e);
         }
-      }))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "button-wrapper d-flex flex-end"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("input", {
+        type: "button",
         onClick: function onClick() {
           return _this2.previousStep();
         },
-        className: "btn btn-default"
-      }, "Previous Step"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this2.nextStep();
-        },
+        className: "btn btn-default",
+        value: "Previous Step"
+      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
+        type: "submit",
         className: "btn btn-primary"
-      }, "Next Step")));
+      }, "Next Step"))));
     }
   }]);
 
   return FormComponent;
-}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
+}(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
 
 /***/ }),
 
@@ -55753,56 +56323,70 @@ function _getMockData() {
 
 /***/ }),
 
-/***/ "./src/components/store.js":
-/*!*********************************!*\
-  !*** ./src/components/store.js ***!
-  \*********************************/
-/*! exports provided: Store, setAppointment, getAppointment */
+/***/ "./src/components/payment.component.js":
+/*!*********************************************!*\
+  !*** ./src/components/payment.component.js ***!
+  \*********************************************/
+/*! exports provided: PaymentComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Store", function() { return Store; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setAppointment", function() { return setAppointment; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAppointment", function() { return getAppointment; });
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PaymentComponent", function() { return PaymentComponent; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 
 
-var Store = {
-  appointment: new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]({
-    slotId: null,
-    slotDate: null,
-    slotTime: null,
-    slotPrice: null,
-    slotCapacity: null,
-    fullName: null,
-    email: null,
-    phoneNumber: null,
-    address: null,
-    zipCode: null
-  })
-};
-function setAppointment(data) {
-  Store.appointment.next(Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, Store.appointment.value, data));
-}
-function getAppointment() {
-  return Store.appointment.value;
-}
+
+
+
+
+var PaymentComponent =
+/*#__PURE__*/
+function (_Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(PaymentComponent, _Component);
+
+  function PaymentComponent() {
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, PaymentComponent);
+
+    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(PaymentComponent).apply(this, arguments));
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(PaymentComponent, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "final-status-wrapper successed"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "final-box-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
+        href: "https://sklep.przelewy24.pl/zakup.php?z24_id_sprzedawcy=93228&z24_kwota=1000&z24_currency=pln&z24_nazwa=Hello%21&z24_language=en&k24_kraj=PL&z24_crc=75ce628f",
+        className: "btn btn-primary"
+      }, "Pay by przelewy24.pl"))));
+    }
+  }]);
+
+  return PaymentComponent;
+}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
 
 /***/ }),
 
-/***/ "./src/components/widget.component.js":
-/*!********************************************!*\
-  !*** ./src/components/widget.component.js ***!
-  \********************************************/
-/*! exports provided: NavLink, WidgetComponent */
+/***/ "./src/components/react-booking.js":
+/*!*****************************************!*\
+  !*** ./src/components/react-booking.js ***!
+  \*****************************************/
+/*! exports provided: NavLink, ReactBooking */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavLink", function() { return NavLink; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WidgetComponent", function() { return WidgetComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReactBooking", function() { return ReactBooking; });
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1__);
@@ -55823,6 +56407,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-transition-group */ "./node_modules/react-transition-group/esm/index.js");
 /* harmony import */ var _final_status_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./final-status.component */ "./src/components/final-status.component.js");
 /* harmony import */ var _appointment_information_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./appointment-information.component */ "./src/components/appointment-information.component.js");
+/* harmony import */ var _payment_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./payment.component */ "./src/components/payment.component.js");
+
 
 
 
@@ -55854,7 +56440,12 @@ function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_4__["default"])(NavLink, [{
     key: "content",
     value: function content() {
-      return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_8___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("i", {
+      return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_8___default.a.Fragment, null, this.props.backUrl && react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Link"], {
+        className: "back-btn",
+        to: this.props.backUrl
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("i", {
+        className: "icon icon-chevron-left"
+      })), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("i", {
         className: 'icon ' + this.props.icon
       }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", null, this.props.label));
     }
@@ -55862,45 +56453,52 @@ function (_Component) {
     key: "render",
     value: function render() {
       if (this.props.pathname === this.props.to) {
-        return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
+        return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("li", {
           className: this.props.pathname === this.props.to ? 'active' : ''
-        }, this.content());
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", null, this.content()));
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Link"], {
+      return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Link"], {
         to: this.props.to
-      }, this.content());
+      }, this.content()));
     }
   }]);
 
   return NavLink;
 }(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
-var WidgetComponent =
+var ReactBooking =
 /*#__PURE__*/
 function (_Component2) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__["default"])(WidgetComponent, _Component2);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__["default"])(ReactBooking, _Component2);
 
-  function WidgetComponent(props) {
+  function ReactBooking(props) {
     var _this;
 
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_3__["default"])(this, WidgetComponent);
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_3__["default"])(this, ReactBooking);
 
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(WidgetComponent).call(this, props));
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(ReactBooking).call(this, props));
     _this.state = {
       campaign: null,
       loaded: false,
       form: {
-        fullname: null,
-        email: null,
-        phone: null,
-        address: null,
-        zipCode: null
+        customer_fullname: null,
+        customer_email: null,
+        customer_phone: null,
+        customer_address: null,
+        customer_zipCode: null,
+        customer_location: null,
+        customer_message: null
       }
     };
     return _this;
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_4__["default"])(WidgetComponent, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_4__["default"])(ReactBooking, [{
+    key: "componentWillReceiveProps",
+    value: function componentWillReceiveProps(nextProps) {
+      console.log(nextProps);
+    }
+  }, {
     key: "componentDidMount",
     value: function () {
       var _componentDidMount = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__["default"])(
@@ -55950,24 +56548,28 @@ function (_Component2) {
             className: "campagin-wrapper"
           }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
             className: "navigation-path"
-          }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(NavLink, {
+          }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(NavLink, {
             label: "Select Date",
             icon: "icon-calendar",
-            to: "/",
+            to: "/datepicker",
             pathname: location.pathname
-          })), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(NavLink, {
+          }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(NavLink, {
             label: "Attendance Information",
             icon: "icon-user",
             to: "/personel-information",
+            backUrl: "/",
             pathname: location.pathname
-          })), _this2.props.paymentTab ? react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("i", {
-            className: "icon icon-credit-card"
-          }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", null, "Payment Page")) : null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(NavLink, {
+          }), _this2.props.paymentTab ? react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(NavLink, {
+            label: "Payment Page",
+            icon: "icon icon-credit-card",
+            to: "",
+            pathname: location.pathname
+          }) : null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(NavLink, {
             label: "Final Status",
             icon: "icon-award",
             to: "/final-status",
             pathname: location.pathname
-          })))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+          }))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
             className: "text-center"
           }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h1", null, _this2.props.title), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("p", null, _this2.props.description)), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_appointment_information_component__WEBPACK_IMPORTED_MODULE_16__["default"], {
             user: {}
@@ -55978,7 +56580,7 @@ function (_Component2) {
           }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Switch"], {
             location: location
           }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Route"], {
-            path: "/",
+            path: "/datepicker",
             exact: true,
             component: function component(props) {
               return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_appointment_component__WEBPACK_IMPORTED_MODULE_11__["AppointmentComponent"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
@@ -55990,59 +56592,230 @@ function (_Component2) {
             path: "/personel-information",
             exact: true,
             component: function component(props) {
-              return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_form_component__WEBPACK_IMPORTED_MODULE_13__["FormComponent"], props);
+              return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_form_component__WEBPACK_IMPORTED_MODULE_13__["FormComponent"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+                onFormSubmit: _this2.props.onFormSubmit,
+                response: _this2.props.response
+              }));
             }
+          }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Route"], {
+            path: "/payment",
+            exact: true,
+            component: _payment_component__WEBPACK_IMPORTED_MODULE_17__["PaymentComponent"]
           }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Route"], {
             path: "/final-status",
             exact: true,
             component: _final_status_component__WEBPACK_IMPORTED_MODULE_15__["FinalStatusComponent"]
+          }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Redirect"], {
+            from: "/",
+            to: '/' + _this2.props.visibleTab
           })))));
         }
       })) : react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", null, "Please wait we are getting data from our servers ...");
     }
   }]);
 
-  return WidgetComponent;
+  return ReactBooking;
 }(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
-WidgetComponent.propTypes = {
+ReactBooking.propTypes = {
   title: prop_types__WEBPACK_IMPORTED_MODULE_10___default.a.string,
   description: prop_types__WEBPACK_IMPORTED_MODULE_10___default.a.string,
   historyType: prop_types__WEBPACK_IMPORTED_MODULE_10___default.a.oneOf(['browser', 'memory']),
   paymentTab: prop_types__WEBPACK_IMPORTED_MODULE_10___default.a.bool,
-  appointments: prop_types__WEBPACK_IMPORTED_MODULE_10___default.a.array
+  appointments: prop_types__WEBPACK_IMPORTED_MODULE_10___default.a.array,
+  visibleTab: prop_types__WEBPACK_IMPORTED_MODULE_10___default.a.string
 };
-WidgetComponent.defaultProps = {
+ReactBooking.defaultProps = {
   title: 'Booking and reservation',
   description: 'Please complete your booking here. Select an appointment and continue.',
   historyType: 'memory',
   paymentTab: true,
-  appointments: []
+  appointments: [],
+  visibleTab: 'datepicker'
 };
 
 /***/ }),
 
-/***/ 1:
-/*!*********************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Flegion%2Fprojects%2Fbooking-widget%2Fpages%2Findex.js ***!
-  \*********************************************************************************************************************************/
+/***/ "./src/components/rxprop.js":
+/*!**********************************!*\
+  !*** ./src/components/rxprop.js ***!
+  \**********************************/
+/*! exports provided: rxProp */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rxProp", function() { return rxProp; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/assign */ "./node_modules/@babel/runtime-corejs2/core-js/object/assign.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var lodash_values__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! lodash.values */ "./node_modules/lodash.values/index.js");
+/* harmony import */ var lodash_values__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(lodash_values__WEBPACK_IMPORTED_MODULE_10__);
+
+
+
+
+
+
+
+
+
+
+ // from babel
+
+function _extends() {
+  _extends = _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_7___default.a || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function rxProp() {
+  var subjectBehaviors = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  return function (ComposedComponent) {
+    return (
+      /*#__PURE__*/
+      function (_React$Component) {
+        Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__["default"])(_class, _React$Component);
+
+        function _class(props) {
+          var _this;
+
+          Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, _class);
+
+          _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(_class).call(this, props));
+          _this.state = {
+            store: {}
+          };
+          _this.subscription = null;
+          return _this;
+        } // Subscribe to RxJS, map the current state to composed component props
+
+
+        Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__["default"])(_class, [{
+          key: "componentWillMount",
+          value: function componentWillMount() {
+            var _this2 = this;
+
+            var vars = _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_1___default()(subjectBehaviors);
+
+            var vals = lodash_values__WEBPACK_IMPORTED_MODULE_10___default()(subjectBehaviors);
+            this.subscription = rxjs__WEBPACK_IMPORTED_MODULE_9__["combineLatest"].apply(void 0, Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(vals)).subscribe(function (result) {
+              var store = {};
+              result.forEach(function (item, index) {
+                store[vars[index]] = item;
+              });
+
+              _this2.setState({
+                store: store
+              });
+            });
+          }
+        }, {
+          key: "componentWillUnmount",
+          value: function componentWillUnmount() {
+            if (this.subscription && this.subscription.unsubscribe) {
+              this.subscription.unsubscribe();
+            }
+          }
+        }, {
+          key: "render",
+          value: function render() {
+            return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(ComposedComponent, _extends({}, this.props, this.state.store));
+          }
+        }]);
+
+        return _class;
+      }(react__WEBPACK_IMPORTED_MODULE_8___default.a.Component)
+    );
+  };
+}
+
+/***/ }),
+
+/***/ "./src/components/store.js":
+/*!*********************************!*\
+  !*** ./src/components/store.js ***!
+  \*********************************/
+/*! exports provided: Store, setAppointment, getAppointment */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Store", function() { return Store; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setAppointment", function() { return setAppointment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAppointment", function() { return getAppointment; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+
+
+var Store = {
+  appointment: new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]({
+    slotId: null,
+    slotDate: null,
+    slotTime: null,
+    slotPrice: null,
+    slotCapacity: null,
+    customer_fullname: null,
+    customer_email: null,
+    customer_phone: null,
+    customer_address: null,
+    customer_zipCode: null,
+    customer_location: null,
+    customer_message: null
+  })
+};
+function setAppointment(data) {
+  Store.appointment.next(Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, Store.appointment.value, data));
+}
+function getAppointment() {
+  return Store.appointment.value;
+}
+
+/***/ }),
+
+/***/ 0:
+/*!****************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=D%3A%5CReact%5Creact-booking%5Cpages%5Cindex.js ***!
+  \****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Flegion%2Fprojects%2Fbooking-widget%2Fpages%2Findex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Flegion%2Fprojects%2Fbooking-widget%2Fpages%2Findex.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=D%3A%5CReact%5Creact-booking%5Cpages%5Cindex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=D%3A%5CReact%5Creact-booking%5Cpages%5Cindex.js!./");
 
 
 /***/ }),
 
-/***/ "dll-reference dll_829b10deddf10e1653a8":
+/***/ "dll-reference dll_7aff549c98b978433226":
 /*!*******************************************!*\
-  !*** external "dll_829b10deddf10e1653a8" ***!
+  !*** external "dll_7aff549c98b978433226" ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = dll_829b10deddf10e1653a8;
+module.exports = dll_7aff549c98b978433226;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[0,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map

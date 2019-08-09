@@ -1,6 +1,6 @@
 import React from 'react';
 import { Snippet } from '../Snippet';
-import { ReactBooking } from '../../components/widget.component';
+import { ReactBooking } from '../../components/react-booking';
 
 const exampleCode = `import { ReactBooking } from 'react-booking';
 

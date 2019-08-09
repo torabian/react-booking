@@ -8,7 +8,8 @@ app.prepare().then(() => {
 
   const query = req => ({
     'accept-lang': req.headers['accept-lang'] || 'pl',
-    baseUrl: req.baseUrl
+    baseUrl: req.baseUrl,
+    id: req.params.id
   });
 
   server.get('/book/:id', (req, res) => {

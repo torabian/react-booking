@@ -7,11 +7,13 @@ export const Store = {
     slotTime: null,
     slotPrice: null,
     slotCapacity: null,
-    fullName: null,
-    email: null,
-    phoneNumber: null,
-    address: null,
-    zipCode: null
+    customer_fullname: null,
+    customer_email: null,
+    customer_phone: null,
+    customer_address: null,
+    customer_zipCode: null,
+    customer_location: null,
+    customer_message: null
   })
 };
 

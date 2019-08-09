@@ -6,18 +6,22 @@
  */
 
 import React from 'react';
-import { acceptLang, initialProps } from './pixelplux-common';
-import { ReactBooking } from '../src/components/widget.component';
+import { acceptLang, initialProps, GetEntity } from './pixelplux-common';
+import { ReactBooking } from '../src/components/react-booking';
+import { get, post } from './network';
 
 export async function GetTermPublic(id) {
-  return get(`/api/fn-booking/appointments/term/${id}`);
+  return get(`/api/fn-booking/appointments/${id}`);
+}
+
+export async function ConfirmBooking(data) {
+  return post('/api/fn-booking/book/' + data.id, data);
 }
 
 @acceptLang
 export default class extends React.Component {
   static async getInitialProps({ query }) {
     const inProps = initialProps(query);
-    console.log(inProps);
     return {
       ...inProps
     };
@@ -25,17 +29,25 @@ export default class extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      response: null,
+      term: null
+    };
   }
 
   async componentDidMount() {
     const { id } = this.props.router.query;
+
     let term = null;
     if (id) {
       try {
         const res = await GetTermPublic(id);
         if (GetEntity(res)) {
           term = GetEntity(res);
+        }
+        for (var slot of term.slots) {
+          slot.start = new Date(slot.start);
+          slot.end = new Date(slot.end);
         }
       } catch (error) {}
     }
@@ -44,13 +56,50 @@ export default class extends React.Component {
     });
   }
 
+  async sendRequestToServer(e) {
+    try {
+      const { id } = this.props.router.query;
+      const data = {
+        ...e,
+        term: id
+      };
+      const response = await ConfirmBooking(data);
+      if (!response) {
+        alert('You are not connected to the internet.');
+        this.setState({
+          response: null
+        });
+      }
+      response.form = e;
+      this.setState({
+        response
+      });
+    } catch (error) {
+      alert('Sorry there was an error. Try again');
+      this.setState({
+        response: null
+      });
+      console.error(error);
+    }
+  }
+
   render() {
+    const { term } = this.state;
     return (
       <html>
         <link rel="stylesheet" href="/static/css/styles.css" />
 
         <div className="calendar-container">
-          <ReactBooking paymentTab={false} />
+          {term && (
+            <ReactBooking
+              title={term.term.title}
+              description={term.term.description}
+              onFormSubmit={e => this.sendRequestToServer(e)}
+              response={this.state.response}
+              paymentTab={false}
+              appointments={term.slots}
+            />
+          )}
         </div>
       </html>
     );
