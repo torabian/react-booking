@@ -8,8 +8,12 @@ import { DocumentNavbar } from './DocumentNavbar';
 import { CreateAccountDoc } from './pages/CreateAccount';
 import { TermsOfServicesDoc } from './pages/TermsOfServices';
 import { PrivacyPolicyDoc } from './pages/PrivacyPolicy';
-// import { BusinessContact } from './pages/BusinessContact';
-// import { BookingAndReservation } from './pages/Booking';
+
+const PREFIX =
+  window.location.host === 'pixelplux.github.io' ||
+  window.location.hostname === 'localhost'
+    ? ''
+    : '/documentation';
 
 export class DocumentLayout extends React.Component {
   constructor(props) {
@@ -62,23 +66,31 @@ export class DocumentLayout extends React.Component {
           <div className="document-content-wrapper">
             <DocumentNavbar onClickMenu={e => this.toggleMenu(e)} />
             <div className="document-content">
-              <Route exact path="/" component={GettingStarted} />
-              <Route exact path="/on-submit-props" component={OnSubmit} />
-              <Route exact path="/payment-methods" component={PaymentDoc} />
+              <Route exact path={PREFIX + '/'} component={GettingStarted} />
               <Route
                 exact
-                path="/privacy-policy"
+                path={PREFIX + '/on-submit-props'}
+                component={OnSubmit}
+              />
+              <Route
+                exact
+                path={PREFIX + '/payment-methods'}
+                component={PaymentDoc}
+              />
+              <Route
+                exact
+                path={PREFIX + '/privacy-policy'}
                 component={PrivacyPolicyDoc}
               />
 
               <Route
                 exact
-                path="/terms-and-conditions"
+                path={PREFIX + '/terms-and-conditions'}
                 component={TermsOfServicesDoc}
               />
               <Route
                 exact
-                path="/create-personal-booking-app"
+                path={PREFIX + '/create-personal-booking-app'}
                 component={CreateAccountDoc}
               />
             </div>
