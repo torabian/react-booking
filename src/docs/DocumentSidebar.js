@@ -47,6 +47,12 @@ export class DocumentSidebar extends React.Component {
               Create personal booking calendar
             </Link>
           </li>
+          <li>
+            <Link onClick={() => this.closeMenu()} to="/terms-and-conditions">
+              <i className="icon icon-credit-card" />
+              Terms and conditions
+            </Link>
+          </li>
         </ul>
       </div>
     );
