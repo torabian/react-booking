@@ -25,7 +25,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build:docs": "REACT_APP_BASENAME=\"/documentation/\" PUBLIC_URL=\"/documentation/\" react-scripts build && mv build build-docs",
+    "build:docs": "REACT_APP_BASENAME=\"/documentation/\" PUBLIC_URL=\"/documentation/\" react-scripts build && rm -rf build-docs && mv build build-docs",
     "build:next": "./node_modules/.bin/next build",
     "build": "react-scripts build",
     "css": " node-sass src/assets/css/styles.scss -o static/css",
