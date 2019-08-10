@@ -5,7 +5,7 @@ const PREFIX =
   window.location.host === 'pixelplux.github.io' ||
   window.location.hostname === 'localhost'
     ? ''
-    : '/documentation';
+    : '';
 
 export class DocumentSidebar extends React.Component {
   closeMenu() {
