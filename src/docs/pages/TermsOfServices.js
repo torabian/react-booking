@@ -1,8 +1,10 @@
 import React from 'react';
-const BrandName = <i>PixelPlux Calendar</i>;
-const CompanyLegalName = 'PixelPlux s.p. zoo';
-const SupportEmail = 'connexion.founder@outlook.com';
-const SupportAddress = 'Pluskiego 74, Wroclaw, Poland';
+import {
+  BrandName,
+  CompanyLegalName,
+  SupportEmail,
+  SupportAddress
+} from './DocsParams';
 
 export class TermsOfServicesDoc extends React.Component {
   render() {

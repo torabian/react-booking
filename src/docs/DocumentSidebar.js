@@ -53,6 +53,12 @@ export class DocumentSidebar extends React.Component {
               Terms and conditions
             </Link>
           </li>
+          <li>
+            <Link onClick={() => this.closeMenu()} to="/privacy-policy">
+              <i className="icon icon-credit-card" />
+              Privacy Policy
+            </Link>
+          </li>
         </ul>
       </div>
     );
