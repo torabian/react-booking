@@ -1,7 +1,7 @@
 import React from 'react';
 import { DocumentSidebar } from './DocumentSidebar';
 import { GettingStarted } from './pages/GettingStarted';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { HashRouter, BrowserRouter, Route } from 'react-router-dom';
 import { OnSubmit } from './pages/OnSubmit';
 import { PaymentDoc } from './pages/PaymentDoc';
 import { DocumentNavbar } from './DocumentNavbar';
@@ -46,7 +46,11 @@ export class DocumentLayout extends React.Component {
   }
 
   render() {
-    console.log('size:', this.state.windowSize);
+    const Router =
+      window.location.host === 'pixelplux.github.io'
+        ? HashRouter
+        : BrowserRouter;
+
     return (
       <Router>
         <div
