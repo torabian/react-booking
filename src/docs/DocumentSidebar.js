@@ -1,6 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+const PREFIX =
+  window.location.host === 'pixelplux.github.io' ||
+  window.location.hostname === 'localhost'
+    ? ''
+    : '/documentation';
+
 export class DocumentSidebar extends React.Component {
   closeMenu() {
     if (this.props.onClickClose) {
@@ -21,19 +27,25 @@ export class DocumentSidebar extends React.Component {
 
         <ul className="menu-items">
           <li>
-            <Link onClick={() => this.closeMenu()} to="/">
+            <Link onClick={() => this.closeMenu()} to={PREFIX + '/'}>
               <i className="icon icon-getting-started" />
               Installation & Demo
             </Link>
           </li>
           <li>
-            <Link onClick={() => this.closeMenu()} to="/on-submit-props">
+            <Link
+              onClick={() => this.closeMenu()}
+              to={PREFIX + '/on-submit-props'}
+            >
               <i className="icon icon-sending-data" />
               Submit call back
             </Link>
           </li>
           <li>
-            <Link onClick={() => this.closeMenu()} to="/payment-methods">
+            <Link
+              onClick={() => this.closeMenu()}
+              to={PREFIX + '/payment-methods'}
+            >
               <i className="icon icon-credit-card" />
               Payment methods
             </Link>
@@ -41,22 +53,28 @@ export class DocumentSidebar extends React.Component {
           <li>
             <Link
               onClick={() => this.closeMenu()}
-              to="/create-personal-booking-app"
+              to={PREFIX + '/create-personal-booking-app'}
             >
               <i className="icon icon-credit-card" />
               Create personal booking calendar
             </Link>
           </li>
           <li>
-            <Link onClick={() => this.closeMenu()} to="/terms-and-conditions">
+            <Link
+              onClick={() => this.closeMenu()}
+              to={PREFIX + '/terms-and-conditions'}
+            >
               <i className="icon icon-credit-card" />
               Terms and conditions
             </Link>
           </li>
           <li>
-            <Link onClick={() => this.closeMenu()} to="/privacy-policy">
+            <Link
+              onClick={() => this.closeMenu()}
+              to={PREFIX + '/privacy-policy'}
+            >
               <i className="icon icon-credit-card" />
-              Privacy Policy
+              Privacy
             </Link>
           </li>
         </ul>

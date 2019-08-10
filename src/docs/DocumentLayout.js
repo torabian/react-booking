@@ -62,31 +62,23 @@ export class DocumentLayout extends React.Component {
           <div className="document-content-wrapper">
             <DocumentNavbar onClickMenu={e => this.toggleMenu(e)} />
             <div className="document-content">
-              <Route exact path="/documentation/" component={GettingStarted} />
+              <Route exact path="/" component={GettingStarted} />
+              <Route exact path="/on-submit-props" component={OnSubmit} />
+              <Route exact path="/payment-methods" component={PaymentDoc} />
               <Route
                 exact
-                path="/documentation/on-submit-props"
-                component={OnSubmit}
-              />
-              <Route
-                exact
-                path="/documentation/payment-methods"
-                component={PaymentDoc}
-              />
-              <Route
-                exact
-                path="/documentation/privacy-policy"
+                path="/privacy-policy"
                 component={PrivacyPolicyDoc}
               />
 
               <Route
                 exact
-                path="/documentation/terms-and-conditions"
+                path="/terms-and-conditions"
                 component={TermsOfServicesDoc}
               />
               <Route
                 exact
-                path="/documentation/create-personal-booking-app"
+                path="/create-personal-booking-app"
                 component={CreateAccountDoc}
               />
             </div>
