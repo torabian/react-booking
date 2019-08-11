@@ -7,7 +7,7 @@ const path = require('path');
 const devMode = process.env.NODE_ENV !== 'production';
 
 const publicDir = path.join(__dirname, 'public');
-const distDir = path.join(__dirname, 'dist');
+const distDir = path.join(__dirname, 'embed-build');
 
 const defaultConfig = {
   mode: process.env.NODE_ENV || 'development',
