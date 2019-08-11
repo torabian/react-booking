@@ -67,6 +67,10 @@ export class CreateAccountDoc extends React.Component {
           password. Now you’ll be logged into your dashboard.
         </p>
 
+        <div className="docs-image-view small">
+          <img src={require('../assets/calendar-signup.png')} />
+        </div>
+
         <h2>Create first campaign for booking</h2>
 
         <p>
@@ -82,6 +86,10 @@ export class CreateAccountDoc extends React.Component {
           each boat and you don’t want mess things up together.
         </p>
 
+        <div className="docs-image-view ">
+          <img src={require('../assets/create-a-new-campaign.png')} />
+        </div>
+
         <h2>Fill information about campaign and appointments</h2>
 
         <p>
@@ -90,6 +98,10 @@ export class CreateAccountDoc extends React.Component {
           After that, click or press “Create the booking”. Don’t worry there
           information can be changed easily in next step.
         </p>
+
+        <div className="docs-image-view ">
+          <img src={require('../assets/fill-campaign-information.png')} />
+        </div>
 
         <p>
           Another important thing is your actual calendar. On the right side you
@@ -100,6 +112,10 @@ export class CreateAccountDoc extends React.Component {
           option multiple people will be attending if you specify any number
           more than 1.
         </p>
+
+        <div className="docs-image-view ">
+          <img src={require('../assets/setup-appointment-calendar.png')} />
+        </div>
 
         <p>
           <strong>
@@ -113,6 +129,10 @@ export class CreateAccountDoc extends React.Component {
           time – this option is useful for group tours, tickets or other group
           activities.
         </p>
+
+        <div className="docs-image-view small">
+          <img src={require('../assets/fill-appointment-modal.png')} />
+        </div>
 
         <p>
           The price fields is also there for you to mention how much of booking
@@ -130,6 +150,10 @@ export class CreateAccountDoc extends React.Component {
           Now you can share your calendar link with other people, it would look
           like something like this:
         </p>
+
+        <div className="docs-image-view medium ">
+          <img src={require('../assets/share-booking-link.png')} />
+        </div>
 
         <p>
           Hope you did enjoy this article. You can create your account here:{' '}

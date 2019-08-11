@@ -290,3 +290,24 @@ body {
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
 }
+
+.docs-image-view {
+  text-align: center;
+  margin: 30px 0;
+  img {
+    max-width: 800px;
+    border: 1px solid silver;
+  }
+
+  &.medium {
+    img {
+      max-width: 500px;
+    }
+  }
+
+  &.small {
+    img {
+      max-width: 300px;
+    }
+  }
+}
