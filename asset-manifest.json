@@ -1,16 +1,22 @@
 {
   "files": {
-    "main.css": "/react-booking/static/css/main.0e4b8e8e.chunk.css",
-    "main.js": "/react-booking/static/js/main.44493a67.chunk.js",
-    "main.js.map": "/react-booking/static/js/main.44493a67.chunk.js.map",
+    "main.css": "/react-booking/static/css/main.3dd54fb6.chunk.css",
+    "main.js": "/react-booking/static/js/main.05f5aba8.chunk.js",
+    "main.js.map": "/react-booking/static/js/main.05f5aba8.chunk.js.map",
     "runtime~main.js": "/react-booking/static/js/runtime~main.f1f11043.js",
     "runtime~main.js.map": "/react-booking/static/js/runtime~main.f1f11043.js.map",
-    "static/js/2.32d9f1eb.chunk.js": "/react-booking/static/js/2.32d9f1eb.chunk.js",
-    "static/js/2.32d9f1eb.chunk.js.map": "/react-booking/static/js/2.32d9f1eb.chunk.js.map",
+    "static/js/2.4c9f9564.chunk.js": "/react-booking/static/js/2.4c9f9564.chunk.js",
+    "static/js/2.4c9f9564.chunk.js.map": "/react-booking/static/js/2.4c9f9564.chunk.js.map",
     "index.html": "/react-booking/index.html",
-    "precache-manifest.d949cbbf1f288a429a9aa26e5be18d22.js": "/react-booking/precache-manifest.d949cbbf1f288a429a9aa26e5be18d22.js",
+    "precache-manifest.a1ed517bb6892b046db49151316191f6.js": "/react-booking/precache-manifest.a1ed517bb6892b046db49151316191f6.js",
     "service-worker.js": "/react-booking/service-worker.js",
-    "static/css/main.0e4b8e8e.chunk.css.map": "/react-booking/static/css/main.0e4b8e8e.chunk.css.map",
-    "static/media/styles.scss": "/react-booking/static/media/icomoon.dd7b3174.svg"
+    "static/css/main.3dd54fb6.chunk.css.map": "/react-booking/static/css/main.3dd54fb6.chunk.css.map",
+    "static/media/calendar-signup.png": "/react-booking/static/media/calendar-signup.2abcdb1e.png",
+    "static/media/create-a-new-campaign.png": "/react-booking/static/media/create-a-new-campaign.c72a0af2.png",
+    "static/media/fill-appointment-modal.png": "/react-booking/static/media/fill-appointment-modal.9e8e6a69.png",
+    "static/media/fill-campaign-information.png": "/react-booking/static/media/fill-campaign-information.a0fbc49f.png",
+    "static/media/styles.scss": "/react-booking/static/media/icomoon.dd7b3174.svg",
+    "static/media/setup-appointment-calendar.png": "/react-booking/static/media/setup-appointment-calendar.01dbfe02.png",
+    "static/media/share-booking-link.png": "/react-booking/static/media/share-booking-link.f0a847ea.png"
   }
 }
