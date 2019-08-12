@@ -6,9 +6,9 @@
  */
 
 import React from 'react';
-import { acceptLang, initialProps, GetEntity } from './pixelplux-common';
-import { ReactBooking } from '../src/components/react-booking';
+import { acceptLang, initialProps } from './pixelplux-common';
 import { get, post } from './network';
+import { ReactBookingEnterprise } from '../src/components/react-booking-enterprise';
 
 export async function GetTermPublic(id) {
   return get(`/api/fn-booking/appointments/${id}`);
@@ -27,79 +27,12 @@ export default class extends React.Component {
     };
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      response: null,
-      term: null
-    };
-  }
-
-  async componentDidMount() {
-    const { id } = this.props.router.query;
-
-    let term = null;
-    if (id) {
-      try {
-        const res = await GetTermPublic(id);
-        if (GetEntity(res)) {
-          term = GetEntity(res);
-        }
-        for (var slot of term.slots) {
-          slot.start = new Date(slot.start);
-          slot.end = new Date(slot.end);
-        }
-      } catch (error) {}
-    }
-    this.setState({
-      term
-    });
-  }
-
-  async sendRequestToServer(e) {
-    try {
-      const { id } = this.props.router.query;
-      const data = {
-        ...e,
-        term: id
-      };
-      const response = await ConfirmBooking(data);
-      if (!response) {
-        alert('You are not connected to the internet.');
-        this.setState({
-          response: null
-        });
-      }
-      response.form = e;
-      this.setState({
-        response
-      });
-    } catch (error) {
-      alert('Sorry there was an error. Try again');
-      this.setState({
-        response: null
-      });
-      console.error(error);
-    }
-  }
-
   render() {
-    const { term } = this.state;
     return (
       <html>
         <link rel="stylesheet" href="/static/css/styles.css" />
-
         <div className="calendar-container">
-          {term && (
-            <ReactBooking
-              title={term.term.title}
-              description={term.term.description}
-              onFormSubmit={e => this.sendRequestToServer(e)}
-              response={this.state.response}
-              paymentTab={false}
-              appointments={term.slots}
-            />
-          )}
+          <ReactBookingEnterprise campaignId={this.props.router.query.id} />
         </div>
       </html>
     );
