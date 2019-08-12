@@ -8,6 +8,7 @@ import { DocumentNavbar } from './DocumentNavbar';
 import { CreateAccountDoc } from './pages/CreateAccount';
 import { TermsOfServicesDoc } from './pages/TermsOfServices';
 import { PrivacyPolicyDoc } from './pages/PrivacyPolicy';
+import { EmbedDoc } from './pages/Embed';
 
 const PREFIX =
   window.location.host === 'pixelplux.github.io' ||
@@ -82,6 +83,8 @@ export class DocumentLayout extends React.Component {
                 path={PREFIX + '/privacy-policy'}
                 component={PrivacyPolicyDoc}
               />
+
+              <Route exact path={PREFIX + '/embed'} component={EmbedDoc} />
 
               <Route
                 exact

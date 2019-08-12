@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - "8"
+
+branches:
+  only:
+    - master
+
+cache:
+  yarn: true
+  directories:
+    - $HOME/.yarn-cache
+    - node_modules
+
+dist: trusty
+addons:
+  chrome: stable
+
+script:
+
+  - npm run build
+  - npm run build:docs
+  - npm run build:next

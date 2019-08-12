@@ -83,6 +83,11 @@ export class DocumentSidebar extends React.Component {
             to="privacy-policy"
             onClickClose={this.props.onClickClose}
           />
+          <MenuItem
+            content="Embed in your app"
+            to="embed"
+            onClickClose={this.props.onClickClose}
+          />
         </ul>
       </div>
     );

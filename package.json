@@ -47,17 +47,17 @@
   },
   "scripts": {
     "w:build": "NODE_ENV=production webpack-cli --mode production",
-    "w:start": "cp public/index_widget.html index.html && webpack-dev-server",
-    "start": "cp public/index_normal.html index.html && react-scripts start",
+    "w:start": "cp public/index_widget.html public/index.html && webpack-dev-server",
+    "start": "cp public/index_normal.html public/index.html && react-scripts start",
     "build:docs": "REACT_APP_BASENAME=\"/documentation/\" PUBLIC_URL=\"/documentation/\" react-scripts build && rm -rf build-docs && mv build build-docs",
     "build:next": "./node_modules/.bin/next build",
-    "build": "react-scripts build",
+    "build:github": "cp public/index_normal.html public/index.html && REACT_APP_BASENAME=\"/react-booking/\" PUBLIC_URL=\"/react-booking/\" react-scripts build",
     "css": " node-sass src/assets/css/styles.scss -o public/css",
     "test": "react-scripts test",
     "gh-pages": "gh-pages -d build",
     "eject": "react-scripts eject",
     "next": " rm -rf .next/ && git checkout .next",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build:github",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
