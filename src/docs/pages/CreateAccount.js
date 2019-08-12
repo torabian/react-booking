@@ -1,23 +1,5 @@
 import React from 'react';
-import { Snippet } from '../Snippet';
-import { ReactBooking } from '../../components/react-booking';
 import { SERVICE_SIGNUP_URL } from '../../links';
-
-const exampleCode = `<ReactBooking
-  title="Booking"
-  description="When user wants to pay, what will happen?"
-  historyType="memory"
-  visibleTab="payment"
-  paymentMethods={[
-    {
-      type: 'przelewy24',
-      url:
-        'https://sklep.przelewy24.pl/zakup.php' + 
-        '?z24_id_sprzedawcy=93228&z24_kwota=1000&z24_currency=pln' +
-        '&z24_nazwa=Hello%21&z24_language=en&k24_kraj=PL&z24_crc=75ce628f'
-    }
-  ]}
-/>`;
 
 export class CreateAccountDoc extends React.Component {
   render() {
@@ -68,7 +50,10 @@ export class CreateAccountDoc extends React.Component {
         </p>
 
         <div className="docs-image-view small">
-          <img src={require('../assets/calendar-signup.png')} />
+          <img
+            alt="Signup for pixelplux booking calendar"
+            src={require('../assets/calendar-signup.png')}
+          />
         </div>
 
         <h2>Create first campaign for booking</h2>
@@ -87,7 +72,10 @@ export class CreateAccountDoc extends React.Component {
         </p>
 
         <div className="docs-image-view ">
-          <img src={require('../assets/create-a-new-campaign.png')} />
+          <img
+            alt="Create new booking campaign"
+            src={require('../assets/create-a-new-campaign.png')}
+          />
         </div>
 
         <h2>Fill information about campaign and appointments</h2>
@@ -100,7 +88,10 @@ export class CreateAccountDoc extends React.Component {
         </p>
 
         <div className="docs-image-view ">
-          <img src={require('../assets/fill-campaign-information.png')} />
+          <img
+            alt="Fill booking campaign information"
+            src={require('../assets/fill-campaign-information.png')}
+          />
         </div>
 
         <p>
@@ -114,7 +105,10 @@ export class CreateAccountDoc extends React.Component {
         </p>
 
         <div className="docs-image-view ">
-          <img src={require('../assets/setup-appointment-calendar.png')} />
+          <img
+            alt="Setup appointment for your campaign"
+            src={require('../assets/setup-appointment-calendar.png')}
+          />
         </div>
 
         <p>
@@ -131,7 +125,10 @@ export class CreateAccountDoc extends React.Component {
         </p>
 
         <div className="docs-image-view small">
-          <img src={require('../assets/fill-appointment-modal.png')} />
+          <img
+            alt="Appointment modal"
+            src={require('../assets/fill-appointment-modal.png')}
+          />
         </div>
 
         <p>
@@ -152,7 +149,10 @@ export class CreateAccountDoc extends React.Component {
         </p>
 
         <div className="docs-image-view medium ">
-          <img src={require('../assets/share-booking-link.png')} />
+          <img
+            alt="Share booking link"
+            src={require('../assets/share-booking-link.png')}
+          />
         </div>
 
         <p>

@@ -112,7 +112,7 @@ export class FormComponent extends Component {
       });
     } else {
       if (
-        !/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(
+        !/^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$/im.test(
           form.customer_phone
         )
       ) {

@@ -38,7 +38,7 @@ export class AppointmentComponent extends Component {
   }
 
   render() {
-    const { campaign, appointments } = this.props;
+    const { appointments } = this.props;
     const { startDate } = this.state;
 
     const includeDates = appointments.map(app => app.start);
