@@ -1,7 +1,7 @@
 import React from 'react';
 import { DocumentSidebar } from './DocumentSidebar';
 import { GettingStarted } from './pages/GettingStarted';
-import { HashRouter, BrowserRouter, Route } from 'react-router-dom';
+import { HashRouter, BrowserRouter, Route, Redirect } from 'react-router-dom';
 import { OnSubmit } from './pages/OnSubmit';
 import { PaymentDoc } from './pages/PaymentDoc';
 import { DocumentNavbar } from './DocumentNavbar';
@@ -9,6 +9,7 @@ import { CreateAccountDoc } from './pages/CreateAccount';
 import { TermsOfServicesDoc } from './pages/TermsOfServices';
 import { PrivacyPolicyDoc } from './pages/PrivacyPolicy';
 import { EmbedDoc } from './pages/Embed';
+import { HowToUse } from './pages/HowToUse';
 
 const PREFIX =
   window.location.host === 'pixelplux.github.io' ||
@@ -67,7 +68,22 @@ export class DocumentLayout extends React.Component {
           <div className="document-content-wrapper">
             <DocumentNavbar onClickMenu={e => this.toggleMenu(e)} />
             <div className="document-content">
-              <Route exact path={PREFIX + '/'} component={GettingStarted} />
+              {/* <Redirect
+                exact
+                from={PREFIX + '/'}
+                to={PREFIX + '/getting-started-for-reactjs'}
+              /> */}
+              <Route
+                exact
+                path={PREFIX + '/how-to-use-booking-and-reservation'}
+                component={HowToUse}
+              />
+
+              <Route
+                exact
+                path={PREFIX + '/getting-started-for-reactjs'}
+                component={GettingStarted}
+              />
               <Route
                 exact
                 path={PREFIX + '/on-submit-props'}

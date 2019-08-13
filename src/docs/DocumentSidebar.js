@@ -1,6 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
+function Empty(props) {
+  return <a {...props} />;
+}
 const PREFIX =
   window.location.host === 'pixelplux.github.io' ||
   window.location.hostname === 'localhost'
@@ -9,15 +12,23 @@ const PREFIX =
 
 export class MenuItem extends React.Component {
   render() {
+    const TAG = this.props.to ? NavLink : Empty;
     return (
       <li>
-        <Link
+        <TAG
+          activeClassName="menu-item-active"
+          className={!this.props.icon ? 'no-icon-link' : null}
           onClick={this.props.onClickClose}
           to={PREFIX + '/' + this.props.to}
         >
-          <i className="icon icon-credit-card" />
+          {this.props.icon ? (
+            <i className={'icon icon-' + this.props.icon} />
+          ) : null}
           {this.props.content}
-        </Link>
+          {this.props.children ? (
+            <ul className="menu-second-level">{this.props.children}</ul>
+          ) : null}
+        </TAG>
       </li>
     );
   }
@@ -29,6 +40,9 @@ export class DocumentSidebar extends React.Component {
       <div className="document-sidebar">
         <div className="document-sidebar-title-wrappper">
           <div className="document-title">React-booking &trade;</div>
+          <div className="document-subtitle">
+            Booking and reservation solution
+          </div>
           <button onClick={this.props.onClickClose}>
             <i className="icon icon-close" />
             <span>CLOSE</span>
@@ -36,53 +50,58 @@ export class DocumentSidebar extends React.Component {
         </div>
 
         <ul className="menu-items">
-          <li>
-            <Link onClick={this.props.onClickClose} to={PREFIX + '/'}>
-              <i className="icon icon-getting-started" />
-              Installation & Demo
-            </Link>
-          </li>
-          <li>
-            <Link
-              onClick={this.props.onClickClose}
-              to={PREFIX + '/on-submit-props'}
-            >
-              <i className="icon icon-sending-data" />
-              Submit call back
-            </Link>
-          </li>
-          <li>
-            <Link
-              onClick={this.props.onClickClose}
-              to={PREFIX + '/payment-methods'}
-            >
-              <i className="icon icon-credit-card" />
-              Payment methods
-            </Link>
-          </li>
-          <li>
-            <Link
-              onClick={this.props.onClickClose}
-              to={PREFIX + '/create-personal-booking-app'}
-            >
-              <i className="icon icon-credit-card" />
-              Create personal booking calendar
-            </Link>
-          </li>
-          <li>
-            <Link
-              onClick={this.props.onClickClose}
-              to={PREFIX + '/terms-and-conditions'}
-            >
-              <i className="icon icon-credit-card" />
-              Terms and conditions
-            </Link>
-          </li>
           <MenuItem
-            content="Privacy Policy"
-            to="privacy-policy"
+            content="Getting started"
+            icon="global"
+            onClickClose={this.props.onClickClose}
+          >
+            <MenuItem
+              content="How to use open-source vs enterprise"
+              to="how-to-use-booking-and-reservation"
+              onClickClose={this.props.onClickClose}
+            />
+            <MenuItem
+              content="Install for ReactJs"
+              to="getting-started-for-reactjs"
+              onClickClose={this.props.onClickClose}
+            />
+          </MenuItem>
+
+          <MenuItem
+            content="Payment methods"
+            to="payment-methods"
+            icon="credit-card"
             onClickClose={this.props.onClickClose}
           />
+
+          <MenuItem
+            content="Guides and tutorials"
+            icon="calendar"
+            onClickClose={this.props.onClickClose}
+          >
+            <MenuItem
+              content="Create personal booking calendar"
+              to="create-personal-booking-app"
+              onClickClose={this.props.onClickClose}
+            />
+          </MenuItem>
+
+          <MenuItem
+            content="Legal and terms"
+            icon="award"
+            onClickClose={this.props.onClickClose}
+          >
+            <MenuItem
+              content="Terms and conditions"
+              to="terms-and-conditions"
+              onClickClose={this.props.onClickClose}
+            />
+            <MenuItem
+              content="Privacy Policy"
+              to="privacy-policy"
+              onClickClose={this.props.onClickClose}
+            />
+          </MenuItem>
           <MenuItem
             content="Embed in your app"
             to="embed"
