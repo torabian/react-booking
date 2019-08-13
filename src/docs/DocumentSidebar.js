@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 function Empty(props) {
   return <a {...props} />;
 }
-const PREFIX =
+export const PREFIX =
   window.location.host === 'pixelplux.github.io' ||
   window.location.hostname === 'localhost'
     ? ''

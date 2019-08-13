@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { PREFIX } from '../DocumentSidebar';
 
 export class HowToUse extends React.Component {
   render() {
@@ -29,8 +30,10 @@ export class HowToUse extends React.Component {
           <br />
           <br />
           You can react more{' '}
-          <Link to="/getting-started-for-reactjs">Install for ReactJs</Link> if
-          you want to read more or use it.
+          <Link to={PREFIX + '/getting-started-for-reactjs'}>
+            Install for ReactJs (Developers guide)
+          </Link>{' '}
+          if you want to read more or use it.
         </p>
         <h2>React-Booking enterprise</h2>
         <p>
@@ -41,7 +44,34 @@ export class HowToUse extends React.Component {
         <ul>
           <li>
             For individual people who want to facilate their customers booking,
-            such as laywers, dentists
+            such as laywers, dentists, teachers, recruiters.
+          </li>
+          <li>
+            Calendar Link: We will provide a static link for each campaign, that
+            you can share in your linkedin messages, that everyone can book an
+            appointment with you.
+          </li>
+          <li>
+            Embedded widget for booking: As a developer, you can embed the
+            booking module in your web projects. This will work with ReactJs, as
+            well as any other web platform ( VueJs, Angular, WordPress)
+          </li>
+        </ul>
+
+        <h2>How to use Calendar Enterprise</h2>
+        <p>
+          Our enterprise calendar and Calendar for teams are ready to use
+          products. You need to create account for personal purposes, and you'll
+          get enough guide in the dashboard admin. You can read more here{' '}
+        </p>
+
+        <h3>Continue reading</h3>
+
+        <ul>
+          <li>
+            <Link to={PREFIX + '/create-personal-booking-app'}>
+              Create personal booking calendar
+            </Link>
           </li>
         </ul>
       </div>
