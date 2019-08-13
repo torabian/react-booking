@@ -1,7 +1,9 @@
 import React from 'react';
+import ScrollMemory from 'react-router-scroll-memory';
+
 import { DocumentSidebar } from './DocumentSidebar';
 import { GettingStarted } from './pages/GettingStarted';
-import { HashRouter, BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { HashRouter, BrowserRouter, Route } from 'react-router-dom';
 import { OnSubmit } from './pages/OnSubmit';
 import { PaymentDoc } from './pages/PaymentDoc';
 import { DocumentNavbar } from './DocumentNavbar';
@@ -59,6 +61,8 @@ export class DocumentLayout extends React.Component {
 
     return (
       <Router>
+        <ScrollMemory />
+
         <div
           className={
             'document-layout' + (this.state.activeMenu ? ' active' : '')

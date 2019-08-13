@@ -1,12 +1,12 @@
 $primary-color: #5468ff;
 $sidebar-width: 375px;
+$warning-color: #ffba52;
 $light-color: #f5f5fa;
 $second-text-color: #848ab8;
 $text-color: #21243d;
 
 .document-layout {
   display: flex;
-  margin-bottom: 100px;
   h1,
   h2,
   h3,
@@ -70,7 +70,7 @@ $text-color: #21243d;
 
 .document-sidebar-title-wrappper {
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 90px;
   > button {
@@ -192,6 +192,7 @@ $text-color: #21243d;
   width: 100%;
   transition: margin-left 0.5s;
   .document-content {
+    overflow-x: scroll;
     padding-left: 25px;
     padding-right: 25px;
     padding-bottom: 24px;
@@ -220,6 +221,12 @@ $text-color: #21243d;
         float: left;
       }
     }
+  }
+
+  .document-warning {
+    background-color: $warning-color;
+    border-radius: 3px;
+    padding: 1px 15px;
   }
 }
 body {
@@ -255,6 +262,7 @@ body {
   display: flex;
   justify-content: space-between;
   .header-search {
+    margin-left: 15px;
     float: right;
     padding-left: 16px;
     padding-right: 16px;
@@ -276,6 +284,7 @@ body {
       padding-top: 16px;
       padding-bottom: 16px;
       margin-top: 2px;
+      font-size: 17px;
       height: 48px;
       background-color: transparent;
       width: 100%;
@@ -292,6 +301,7 @@ body {
   background: transparent;
   border: 0;
   outline: 0;
+  padding: 0;
   .icon-menu {
     font-size: 35px;
     padding: 10px;
@@ -303,12 +313,33 @@ body {
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
+@media (max-width: 768px) {
+  .document-content-wrapper {
+    .document-content {
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 0;
+      h1 {
+        margin-bottom: 15px;
+        line-height: 34px;
+        font-size: 22px;
+      }
+      h2 {
+        margin-top: 30px;
+        line-height: 34px;
+        font-size: 19px;
+      }
+      .document-code-snippet {
+        padding: 10px;
+      }
+    }
+  }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .document-content-wrapper {
+    width: calc(100% - 375px);
     margin-left: $sidebar-width;
     .document-content {
       padding-left: 56px;
@@ -341,6 +372,7 @@ body {
 .docs-image-view {
   text-align: center;
   margin: 30px 0;
+  overflow-x: scroll;
   img {
     max-width: 800px;
     border: 1px solid silver;

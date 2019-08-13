@@ -15,26 +15,6 @@ export class HowToUse extends React.Component {
           of them that suits you best.
         </p>
 
-        <h2>React-Booking open-source</h2>
-        <p>
-          We provide a reactjs based package (reactjs is a framework from
-          facebook) which is called 'react-booking' and it can be cloned,
-          installed as a dependency, or other ways. It will give users a
-          front-end widget, inline widget or a standalone url.
-          <br />
-          The reason that we provide this package is to give our users and
-          clients more possibilty to edit and customize our service. Although we
-          provide customisable widget with different UI theme colors, we
-          understand that there might be cases that it won't satisfy expert
-          clients.
-          <br />
-          <br />
-          You can react more{' '}
-          <Link to={PREFIX + '/getting-started-for-reactjs'}>
-            Install for ReactJs (Developers guide)
-          </Link>{' '}
-          if you want to read more or use it.
-        </p>
         <h2>React-Booking enterprise</h2>
         <p>
           We provide a hosted booking service that can be used for multiple
@@ -63,6 +43,37 @@ export class HowToUse extends React.Component {
           Our enterprise calendar and Calendar for teams are ready to use
           products. You need to create account for personal purposes, and you'll
           get enough guide in the dashboard admin. You can read more here{' '}
+        </p>
+
+        <div className="document-warning">
+          <p>
+            This section is for developers. For ready to use booking and
+            reservation for your website, or social media, read:
+            <Link to={PREFIX + '/create-personal-booking-app'}>
+              Create personal booking calendar
+            </Link>
+          </p>
+        </div>
+
+        <h2>React-Booking open-source</h2>
+        <p>
+          We provide a reactjs based package (reactjs is a framework from
+          facebook) which is called 'react-booking' and it can be cloned,
+          installed as a dependency, or other ways. It will give users a
+          front-end widget, inline widget or a standalone url.
+          <br />
+          The reason that we provide this package is to give our users and
+          clients more possibilty to edit and customize our service. Although we
+          provide customisable widget with different UI theme colors, we
+          understand that there might be cases that it won't satisfy expert
+          clients.
+          <br />
+          <br />
+          You can react more{' '}
+          <Link to={PREFIX + '/getting-started-for-reactjs'}>
+            Install for ReactJs (Developers guide)
+          </Link>{' '}
+          if you want to read more or use it.
         </p>
 
         <h3>Continue reading</h3>

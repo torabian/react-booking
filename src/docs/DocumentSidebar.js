@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 function Empty(props) {
-  return <a {...props} />;
+  return <a {...props}>{props.children}</a>;
 }
 export const PREFIX =
   window.location.host === 'pixelplux.github.io' ||
@@ -39,9 +39,11 @@ export class DocumentSidebar extends React.Component {
     return (
       <div className="document-sidebar">
         <div className="document-sidebar-title-wrappper">
-          <div className="document-title">React-booking &trade;</div>
-          <div className="document-subtitle">
-            Booking and reservation solution
+          <div className="document-info-container">
+            <div className="document-title">React-booking &trade;</div>
+            <div className="document-subtitle">
+              Booking and reservation solution
+            </div>
           </div>
           <button onClick={this.props.onClickClose}>
             <i className="icon icon-close" />
@@ -103,10 +105,16 @@ export class DocumentSidebar extends React.Component {
             />
           </MenuItem>
           <MenuItem
-            content="Embed in your app"
-            to="embed"
+            content="Web Integration"
+            icon="layers"
             onClickClose={this.props.onClickClose}
-          />
+          >
+            <MenuItem
+              content="Drop-in booking widget"
+              to="embed"
+              onClickClose={this.props.onClickClose}
+            />
+          </MenuItem>
         </ul>
       </div>
     );
