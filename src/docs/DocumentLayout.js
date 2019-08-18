@@ -72,11 +72,6 @@ export class DocumentLayout extends React.Component {
           <div className="document-content-wrapper">
             <DocumentNavbar onClickMenu={e => this.toggleMenu(e)} />
             <div className="document-content">
-              {/* <Redirect
-                exact
-                from={PREFIX + '/'}
-                to={PREFIX + '/getting-started-for-reactjs'}
-              /> */}
               <Route
                 exact
                 path={PREFIX + '/how-to-use-booking-and-reservation'}
@@ -116,6 +111,7 @@ export class DocumentLayout extends React.Component {
                 path={PREFIX + '/create-personal-booking-app'}
                 component={CreateAccountDoc}
               />
+              <Route exact path={PREFIX + '/'} component={GettingStarted} />
             </div>
           </div>
         </div>
