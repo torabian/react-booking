@@ -13,7 +13,7 @@ const defaultConfig = {
   mode: process.env.NODE_ENV || 'development',
   devServer: {
     contentBase: publicDir,
-    port: 5000
+    port: process.env.PORT || 5000
   },
   plugins: [
     // new CleanWebpackPlugin({protectWebpackAssets: false}),

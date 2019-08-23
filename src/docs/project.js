@@ -15,9 +15,11 @@ import { HowToUse } from './pages/HowToUse';
 import { CustomContactInformationExample } from './pages/examples/CustomContactInformationExample';
 import { ReactBookingProperties } from './pages/ReactBookingProps';
 
+const location =
+  typeof window !== 'undefined' ? window.location : { host: '', hostname: '' };
+
 export const PREFIX =
-  window.location.host === 'pixelplux.github.io' ||
-  window.location.hostname === 'localhost'
+  location.host === 'pixelplux.github.io' || location.hostname === 'localhost'
     ? ''
     : '/documentation';
 

@@ -4,13 +4,7 @@ import ScrollMemory from 'react-router-scroll-memory';
 import { DocumentSidebar } from './DocumentSidebar';
 import { DocumentNavbar } from './DocumentNavbar';
 import { HashRouter, BrowserRouter, Route } from 'react-router-dom';
-import { Routes } from './project';
-
-const PREFIX =
-  window.location.host === 'pixelplux.github.io' ||
-  window.location.hostname === 'localhost'
-    ? ''
-    : '/documentation';
+import { Routes, PREFIX } from './project';
 
 function buildRoutes() {
   return (

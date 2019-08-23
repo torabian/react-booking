@@ -16,11 +16,15 @@ app.prepare().then(() => {
     return app.render(req, res, '/index', { ...query(req) });
   });
 
+  server.get('/d/:id', (req, res) => {
+    return app.render(req, res, '/documents', { ...query(req) });
+  });
+
   server.get('*', (req, res) => {
     return app.render(req, res, req.url, { ...query(req) });
   });
 
-  const PORT = process.env.PORT || 5000;
+  const PORT = process.env.PORT || 5001;
   server.listen(PORT, err => {
     if (err) throw err;
     console.log('> Server rodando em http://localhost:' + PORT);
