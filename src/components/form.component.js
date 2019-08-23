@@ -49,8 +49,6 @@ export class FormComponent extends Component {
     this.props.history.push('/');
   }
 
-  nextStep() {}
-
   onSubmit(e) {
     e && e.preventDefault && e.preventDefault();
     let validation = this.preValidator(this.state.form);

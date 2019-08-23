@@ -11,7 +11,6 @@ export function addAppointment(data) {
 }
 
 export function setAppointment(module_id, data) {
-  console.log(module_id, data);
   const newvalue = [];
   for (let _v of Store.appointment.value) {
     if (_v.module_id === module_id) {

@@ -63,7 +63,10 @@ export class ReactBooking extends Component {
     historyType: PropType.oneOf(['browser', 'memory']),
     paymentTab: PropType.bool,
     appointments: PropType.array,
-    visibleTab: PropType.string
+    visibleTab: PropType.string,
+    formMode: PropType.string,
+    onFormSubmit: PropType.func,
+    scrollAdjust: PropType.string
   };
 
   static defaultProps = {
@@ -73,7 +76,14 @@ export class ReactBooking extends Component {
     historyType: 'memory',
     paymentTab: true,
     appointments: [],
-    visibleTab: 'datepicker'
+    visibleTab: 'datepicker',
+    formMode: 'normal',
+    onFormSubmit: params =>
+      console.warn(
+        'You need to implement `onFormSubmit` and integrate it with your project.',
+        params
+      ),
+    scrollAdjust: 'smooth'
   };
 
   constructor(props) {
@@ -193,6 +203,7 @@ export class ReactBooking extends Component {
                           {...props}
                           module_id={this.state.module_id}
                           campaign={campaign}
+                          parentProps={this.props}
                           appointments={this.props.appointments}
                         />
                       )}
@@ -203,19 +214,28 @@ export class ReactBooking extends Component {
                       component={props => (
                         <FormComponent
                           {...props}
+                          hello="ali"
                           module_id={this.state.module_id}
                           onFormSubmit={this.props.onFormSubmit}
+                          parentProps={this.props}
                           response={this.props.response}
                         />
                       )}
                     />
 
-                    <Route path="/payment" exact component={PaymentComponent} />
+                    <Route
+                      path="/payment"
+                      parentProps={this.props}
+                      exact
+                      component={PaymentComponent}
+                    />
 
                     <Route
                       path="/final-status"
                       exact
-                      component={FinalStatusComponent}
+                      component={props => (
+                        <FinalStatusComponent parentProps={this.props} />
+                      )}
                     />
 
                     <Redirect from="/" to={'/' + this.props.visibleTab} />

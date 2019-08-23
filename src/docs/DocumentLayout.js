@@ -12,6 +12,8 @@ import { TermsOfServicesDoc } from './pages/TermsOfServices';
 import { PrivacyPolicyDoc } from './pages/PrivacyPolicy';
 import { EmbedDoc } from './pages/Embed';
 import { HowToUse } from './pages/HowToUse';
+import { CustomContactInformationExample } from './pages/examples/CustomContactInformationExample';
+import { ReactBookingProperties } from './pages/ReactBookingProps';
 
 const PREFIX =
   window.location.host === 'pixelplux.github.io' ||
@@ -82,6 +84,17 @@ export class DocumentLayout extends React.Component {
                 exact
                 path={PREFIX + '/getting-started-for-reactjs'}
                 component={GettingStarted}
+              />
+
+              <Route
+                exact
+                path={PREFIX + '/react-booking-properties'}
+                component={ReactBookingProperties}
+              />
+              <Route
+                exact
+                path={PREFIX + '/custom-contact-information'}
+                component={CustomContactInformationExample}
               />
               <Route
                 exact

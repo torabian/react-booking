@@ -5,6 +5,11 @@ $light-color: #f5f5fa;
 $second-text-color: #848ab8;
 $text-color: #21243d;
 
+@mixin text() {
+  font-size: 14px;
+  line-height: 24px;
+}
+
 .document-layout {
   display: flex;
   h1,
@@ -48,8 +53,7 @@ $text-color: #21243d;
   }
 
   p {
-    font-size: 14px;
-    line-height: 24px;
+    @include text();
   }
 
   a {
@@ -388,5 +392,14 @@ body {
     img {
       max-width: 300px;
     }
+  }
+}
+
+.docs-component-properties-table {
+  border: 1px solid $light-color;
+  @include text();
+
+  td {
+    border: 1px solid $light-color;
   }
 }

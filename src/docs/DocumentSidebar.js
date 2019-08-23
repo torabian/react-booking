@@ -67,6 +67,24 @@ export class DocumentSidebar extends React.Component {
               to="getting-started-for-reactjs"
               onClickClose={this.props.onClickClose}
             />
+
+            <MenuItem
+              content="ReactBooking Properties (props)"
+              to="react-booking-properties"
+              onClickClose={this.props.onClickClose}
+            />
+          </MenuItem>
+
+          <MenuItem
+            content="Examples"
+            icon="shield"
+            onClickClose={this.props.onClickClose}
+          >
+            <MenuItem
+              content="Custom contact information"
+              to="custom-contact-information"
+              onClickClose={this.props.onClickClose}
+            />
           </MenuItem>
 
           <MenuItem
