@@ -11,7 +11,7 @@ export class App extends React.Component {
         title="Booking"
         description="Setup your booking"
         historyType="memory"
-        paymentMethods={{ cash: true, online: false }}
+        formMode="skip"
         appointments={[
           {
             id: 1,
@@ -63,78 +63,9 @@ export class CustomContactInformationExample extends React.Component {
                 amount: 10,
                 curr: '$'
               }
-            },
-            {
-              id: 2,
-              start: new Date(2019, 6, 10, 10, 30),
-              end: new Date(2019, 6, 10, 10, 45),
-              capacity: 10,
-              price: {
-                amount: 10,
-                curr: '$'
-              }
-            },
-            {
-              id: 3,
-              start: new Date(2019, 6, 10, 10, 30),
-              end: new Date(2019, 6, 10, 10, 45),
-              capacity: 10,
-              price: {
-                amount: 10,
-                curr: '$'
-              }
-            },
-            {
-              id: 4,
-              start: new Date(2019, 6, 11, 10, 30),
-              end: new Date(2019, 6, 11, 10, 45),
-              capacity: 10,
-              price: {
-                amount: 10,
-                curr: '$'
-              }
             }
           ]}
         />
-        <h1>Custom contact information</h1>
-        <p>
-          By default we ask for people <b>Fullname</b>, <b>Phone number</b>,{' '}
-          <b>Email</b>. You can change this easily with various options as
-          described below.
-        </p>
-        <h2>No contact information</h2>
-        <p>
-          If you want to not collect any information about the user, and they
-          only select the appointment and complete the process, you can use this
-          code. This case is useful for campaigns, or getting customer feedback
-          about their preferred time.
-        </p>
-        <h1>Custom contact information</h1>
-        <p>
-          By default we ask for people <b>Fullname</b>, <b>Phone number</b>,{' '}
-          <b>Email</b>. You can change this easily with various options as
-          described below.
-        </p>
-        <h2>No contact information</h2>
-        <p>
-          If you want to not collect any information about the user, and they
-          only select the appointment and complete the process, you can use this
-          code. This case is useful for campaigns, or getting customer feedback
-          about their preferred time.
-        </p>
-        <h1>Custom contact information</h1>
-        <p>
-          By default we ask for people <b>Fullname</b>, <b>Phone number</b>,{' '}
-          <b>Email</b>. You can change this easily with various options as
-          described below.
-        </p>
-        <h2>No contact information</h2>
-        <p>
-          If you want to not collect any information about the user, and they
-          only select the appointment and complete the process, you can use this
-          code. This case is useful for campaigns, or getting customer feedback
-          about their preferred time.
-        </p>
       </div>
     );
   }
