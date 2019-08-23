@@ -140,6 +140,7 @@ export class FormComponent extends Component {
                 name="customer_fullname"
                 title="FULLNAME"
                 icon="icon-user"
+                autoFocus
                 response={this.state.response}
                 onChange={e => this.setFormState('customer_fullname', e)}
               />

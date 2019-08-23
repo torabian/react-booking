@@ -67,7 +67,7 @@ class AppointmentInformationComponent extends Component {
             </span>
           </div>
         )}
-        {user.slotTime && (
+        {user.slotPrice && (
           <div>
             <i className="icon icon-dollar-sign" />
             <span className="selected-appointment-information-title">
