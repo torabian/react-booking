@@ -2,24 +2,29 @@ import React from 'react';
 import ScrollMemory from 'react-router-scroll-memory';
 
 import { DocumentSidebar } from './DocumentSidebar';
-import { GettingStarted } from './pages/GettingStarted';
-import { HashRouter, BrowserRouter, Route } from 'react-router-dom';
-import { OnSubmit } from './pages/OnSubmit';
-import { PaymentDoc } from './pages/PaymentDoc';
 import { DocumentNavbar } from './DocumentNavbar';
-import { CreateAccountDoc } from './pages/CreateAccount';
-import { TermsOfServicesDoc } from './pages/TermsOfServices';
-import { PrivacyPolicyDoc } from './pages/PrivacyPolicy';
-import { EmbedDoc } from './pages/Embed';
-import { HowToUse } from './pages/HowToUse';
-import { CustomContactInformationExample } from './pages/examples/CustomContactInformationExample';
-import { ReactBookingProperties } from './pages/ReactBookingProps';
+import { HashRouter, BrowserRouter, Route } from 'react-router-dom';
+import { Routes } from './project';
 
 const PREFIX =
   window.location.host === 'pixelplux.github.io' ||
   window.location.hostname === 'localhost'
     ? ''
     : '/documentation';
+
+function buildRoutes() {
+  return (
+    <>
+      {Routes.map(route => (
+        <Route
+          exact
+          path={`${PREFIX}/${route.path}`}
+          component={route.component}
+        />
+      ))}
+    </>
+  );
+}
 
 export class DocumentLayout extends React.Component {
   constructor(props) {
@@ -73,59 +78,7 @@ export class DocumentLayout extends React.Component {
           <DocumentSidebar onClickClose={() => this.toggleMenu(false)} />
           <div className="document-content-wrapper">
             <DocumentNavbar onClickMenu={e => this.toggleMenu(e)} />
-            <div className="document-content">
-              <Route
-                exact
-                path={PREFIX + '/how-to-use-booking-and-reservation'}
-                component={HowToUse}
-              />
-
-              <Route
-                exact
-                path={PREFIX + '/getting-started-for-reactjs'}
-                component={GettingStarted}
-              />
-
-              <Route
-                exact
-                path={PREFIX + '/react-booking-properties'}
-                component={ReactBookingProperties}
-              />
-              <Route
-                exact
-                path={PREFIX + '/custom-contact-information'}
-                component={CustomContactInformationExample}
-              />
-              <Route
-                exact
-                path={PREFIX + '/on-submit-props'}
-                component={OnSubmit}
-              />
-              <Route
-                exact
-                path={PREFIX + '/payment-methods'}
-                component={PaymentDoc}
-              />
-              <Route
-                exact
-                path={PREFIX + '/privacy-policy'}
-                component={PrivacyPolicyDoc}
-              />
-
-              <Route exact path={PREFIX + '/embed'} component={EmbedDoc} />
-
-              <Route
-                exact
-                path={PREFIX + '/terms-and-conditions'}
-                component={TermsOfServicesDoc}
-              />
-              <Route
-                exact
-                path={PREFIX + '/create-personal-booking-app'}
-                component={CreateAccountDoc}
-              />
-              <Route exact path={PREFIX + '/'} component={GettingStarted} />
-            </div>
+            <div className="document-content">{buildRoutes()}</div>
           </div>
         </div>
       </Router>
