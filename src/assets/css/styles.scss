@@ -8,7 +8,9 @@ $mainForeColor: #ffffff;
 
 * {
   box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
 }
+
 body {
   font-family: 'Oxygen', sans-serif;
 }

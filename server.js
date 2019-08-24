@@ -16,8 +16,8 @@ app.prepare().then(() => {
     return app.render(req, res, '/index', { ...query(req) });
   });
 
-  server.get('/d/:id', (req, res) => {
-    return app.render(req, res, '/documents', { ...query(req) });
+  server.get('/documentation/:id', (req, res) => {
+    return app.render(req, res, '/documentation', { ...query(req) });
   });
 
   server.get('*', (req, res) => {

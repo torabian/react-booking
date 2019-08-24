@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { PREFIX } from '../project';
+import { Link } from '../DocumentCommon';
 
 export class HowToUse extends React.Component {
   render() {

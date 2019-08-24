@@ -59,7 +59,8 @@ export const SidebarItems = [
   {
     label: 'Payment methods',
     path: 'payment-methods',
-    icon: 'credit-card'
+    icon: 'credit-card',
+    component: PaymentDoc
   },
   {
     label: 'Guides and tutorials',

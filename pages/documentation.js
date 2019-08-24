@@ -8,6 +8,8 @@
 import React from 'react';
 import { acceptLang, initialProps } from './pixelplux-common';
 import { DocumentSidebar } from '../src/docs/DocumentSidebar';
+import { Routes } from '../src/docs/project';
+import { DocumentNavbar } from '../src/docs/DocumentNavbar';
 
 @acceptLang
 export default class extends React.Component {
@@ -19,11 +21,24 @@ export default class extends React.Component {
   }
 
   render() {
+    const id = this.props.router.query.id;
+    const Page = Routes.find(page => page.path === id);
+    if (Page) {
+      console.log(Page);
+    }
+
     return (
       <html>
         <link rel="stylesheet" href="/static/css/styles.css" />
-
-        <DocumentSidebar />
+        <div className="document-layout">
+          <DocumentSidebar />
+          <div className="document-content-wrapper">
+            <DocumentNavbar onClickMenu={e => this.toggleMenu(e)} />
+            <div className="document-content">
+              {Page && Page.component ? <Page.component /> : null}
+            </div>
+          </div>
+        </div>
       </html>
     );
   }

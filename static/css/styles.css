@@ -848,8 +848,7 @@ li.react-datepicker__time-list-item--disabled:hover {
   content: '\e939'; }
 
 .document-layout {
-  display: flex;
-  margin-bottom: 100px; }
+  display: flex; }
   .document-layout h1,
   .document-layout h2,
   .document-layout h3,
@@ -892,6 +891,7 @@ li.react-datepicker__time-list-item--disabled:hover {
 
 .document-sidebar-title-wrappper {
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 90px; }
   .document-sidebar-title-wrappper > button {
@@ -911,10 +911,11 @@ li.react-datepicker__time-list-item--disabled:hover {
 .document-sidebar {
   min-width: 375px;
   position: fixed;
+  overflow-y: scroll;
   bottom: 0;
   top: 0;
   background-image: linear-gradient(90deg, #f5f5fa 80%, #ebebf0);
-  left: -100%;
+  left: -200%;
   padding-top: 22px;
   padding-bottom: 24px;
   padding-left: 40px;
@@ -924,18 +925,30 @@ li.react-datepicker__time-list-item--disabled:hover {
   .document-sidebar .document-title {
     font-size: 24px;
     color: #5468ff;
-    font-weight: 600; }
+    font-weight: 600;
+    display: block; }
+  .document-sidebar .document-subtitle {
+    color: #848ab8;
+    display: block;
+    font-size: 19px;
+    margin-top: 10px; }
   .document-sidebar ul {
     list-style: none; }
+  .document-sidebar > ul li > .no-icon-link {
+    padding-left: 31px; }
+  .document-sidebar .menu-second-level .no-icon-link {
+    padding-left: 0; }
+  .document-sidebar .menu-second-level {
+    padding: 0 30px; }
   .document-sidebar ul.menu-items {
     margin: 0;
     padding: 0;
     font-size: 14px; }
     .document-sidebar ul.menu-items li {
-      color: #5468ff;
-      margin-bottom: 25px;
-      margin-top: 25px;
-      font-size: 16px; }
+      color: #21243d;
+      margin-bottom: 20px;
+      margin-top: 20px;
+      font-size: 13px; }
       .document-sidebar ul.menu-items li .icon {
         font-size: 18px;
         font-weight: 600px;
@@ -946,7 +959,14 @@ li.react-datepicker__time-list-item--disabled:hover {
         position: relative;
         top: 2px; }
       .document-sidebar ul.menu-items li a {
+        color: #21243d;
         text-decoration: none; }
+    .document-sidebar ul.menu-items ul.menu-second-level li a {
+      color: #848ab8; }
+    .document-sidebar ul.menu-items ul li a.menu-item-active {
+      color: #5468ff; }
+    .document-sidebar ul.menu-items a.menu-item-active {
+      color: #5468ff; }
     .document-sidebar ul.menu-items .document-sub-menu {
       margin-left: 40px; }
 
@@ -955,6 +975,7 @@ li.react-datepicker__time-list-item--disabled:hover {
   width: 100%;
   transition: margin-left 0.5s; }
   .document-content-wrapper .document-content {
+    overflow-x: scroll;
     padding-left: 25px;
     padding-right: 25px;
     padding-bottom: 24px;
@@ -978,6 +999,10 @@ li.react-datepicker__time-list-item--disabled:hover {
         display: inline-block;
         color: #c5c9e0;
         float: left; }
+  .document-content-wrapper .document-warning {
+    background-color: #ffba52;
+    border-radius: 3px;
+    padding: 1px 15px; }
 
 body {
   margin: 0; }
@@ -1007,6 +1032,7 @@ body {
   display: flex;
   justify-content: space-between; }
   .header-navbar-wrapper .header-search {
+    margin-left: 15px;
     float: right;
     padding-left: 16px;
     padding-right: 16px;
@@ -1027,6 +1053,7 @@ body {
       padding-top: 16px;
       padding-bottom: 16px;
       margin-top: 2px;
+      font-size: 17px;
       height: 48px;
       background-color: transparent;
       width: 100%;
@@ -1039,13 +1066,31 @@ body {
   display: flex;
   background: transparent;
   border: 0;
-  outline: 0; }
+  outline: 0;
+  padding: 0; }
   .menu-ham .icon-menu {
     font-size: 35px;
     padding: 10px; }
 
+@media (max-width: 768px) {
+  .document-content-wrapper .document-content {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0; }
+    .document-content-wrapper .document-content h1 {
+      margin-bottom: 15px;
+      line-height: 34px;
+      font-size: 22px; }
+    .document-content-wrapper .document-content h2 {
+      margin-top: 30px;
+      line-height: 34px;
+      font-size: 19px; }
+    .document-content-wrapper .document-content .document-code-snippet {
+      padding: 10px; } }
+
 @media (min-width: 992px) {
   .document-content-wrapper {
+    width: calc(100% - 375px);
     margin-left: 375px; }
     .document-content-wrapper .document-content {
       padding-left: 56px;
@@ -1060,8 +1105,28 @@ body {
   .header-search {
     max-width: 100% !important; } }
 
+.docs-image-view {
+  text-align: center;
+  margin: 30px 0;
+  overflow-x: scroll; }
+  .docs-image-view img {
+    max-width: 800px;
+    border: 1px solid silver; }
+  .docs-image-view.medium img {
+    max-width: 500px; }
+  .docs-image-view.small img {
+    max-width: 300px; }
+
+.docs-component-properties-table {
+  border: 1px solid #f5f5fa;
+  font-size: 14px;
+  line-height: 24px; }
+  .docs-component-properties-table td {
+    border: 1px solid #f5f5fa; }
+
 * {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch; }
 
 body {
   font-family: 'Oxygen', sans-serif; }

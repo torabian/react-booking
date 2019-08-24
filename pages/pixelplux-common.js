@@ -185,7 +185,7 @@ export function initialProps(query) {
       acceptLang
     };
   }
-  throw new Error('Accept language is missing');
+  // throw new Error('Accept language is missing');
 }
 
 export function setAcceptLang(query) {
