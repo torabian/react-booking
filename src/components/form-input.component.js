@@ -33,6 +33,7 @@ export class FormInputComponent extends Component {
         </div>
         <div>
           <input
+            {...this.props}
             className="booking-widget-input"
             type="text"
             placeholder={placeholder}

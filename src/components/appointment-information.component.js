@@ -5,42 +5,43 @@ import { rxProp } from './rxprop';
 
 class AppointmentInformationComponent extends Component {
   render() {
-    const { user } = this.props;
+    let { user } = this.props;
+    user = user.find(x => x.module_id === this.props.module_id);
     if (!user || !user.slotId) {
       return <></>;
     }
     return (
       <div className="selected-appointment-information">
-        {user.fullName && (
+        {user.customer_fullname && (
           <div>
             <i className="icon icon-user" />
             <span className="selected-appointment-information-title">
               Fullname:
             </span>
             <span className="selected-appointment-information-value">
-              {user.fullName}
+              {user.customer_fullname}
             </span>
           </div>
         )}
-        {user.email && (
+        {user.customer_email && (
           <div>
             <i className="icon icon-at-sign" />
             <span className="selected-appointment-information-title">
               Email:
             </span>
             <span className="selected-appointment-information-value">
-              {user.email}
+              {user.customer_email}
             </span>
           </div>
         )}
-        {user.phoneNumber && (
+        {user.customer_phone && (
           <div>
             <i className="icon icon-phone" />
             <span className="selected-appointment-information-title">
               Phone number:
             </span>
             <span className="selected-appointment-information-value">
-              {user.phoneNumber}
+              {user.customer_phone}
             </span>
           </div>
         )}
@@ -66,7 +67,7 @@ class AppointmentInformationComponent extends Component {
             </span>
           </div>
         )}
-        {user.slotTime && (
+        {user.slotPrice && (
           <div>
             <i className="icon icon-dollar-sign" />
             <span className="selected-appointment-information-title">

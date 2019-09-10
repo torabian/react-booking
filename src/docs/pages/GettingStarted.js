@@ -1,6 +1,6 @@
 import React from 'react';
 import { Snippet } from '../Snippet';
-import { ReactBooking } from '../../components/widget.component';
+import { ReactBooking } from '../../components/react-booking';
 
 const exampleCode = `import { ReactBooking } from 'react-booking';
 
@@ -33,7 +33,7 @@ export class GettingStarted extends React.Component {
   render() {
     return (
       <div>
-        <h1>Install react booking</h1>
+        <h1>Install for ReactJs projects</h1>
         <p>
           React booking is written in ReactJs, but can be used in any other web
           app. If your project is based on react, just install it as a

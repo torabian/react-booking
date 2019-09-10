@@ -7,50 +7,32 @@
 
 import React from 'react';
 import { acceptLang, initialProps } from './pixelplux-common';
-import { ReactBooking } from '../src/components/widget.component';
+import { get, post } from './network';
+import { ReactBookingEnterprise } from '../src/components/react-booking-enterprise';
 
 export async function GetTermPublic(id) {
-  return get(`/api/fn-booking/appointments/term/${id}`);
+  return get(`/api/fn-booking/appointments/${id}`);
+}
+
+export async function ConfirmBooking(data) {
+  return post('/api/fn-booking/book/' + data.id, data);
 }
 
 @acceptLang
 export default class extends React.Component {
   static async getInitialProps({ query }) {
     const inProps = initialProps(query);
-    console.log(inProps);
     return {
       ...inProps
     };
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  async componentDidMount() {
-    const { id } = this.props.router.query;
-    let term = null;
-    if (id) {
-      try {
-        const res = await GetTermPublic(id);
-        if (GetEntity(res)) {
-          term = GetEntity(res);
-        }
-      } catch (error) {}
-    }
-    this.setState({
-      term
-    });
   }
 
   render() {
     return (
       <html>
         <link rel="stylesheet" href="/static/css/styles.css" />
-
         <div className="calendar-container">
-          <ReactBooking paymentTab={false} />
+          <ReactBookingEnterprise campaignId={this.props.router.query.id} />
         </div>
       </html>
     );

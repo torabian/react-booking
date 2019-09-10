@@ -24,4 +24,12 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .next
+build-docs
+package.json~
 .next
+embed-build
+npm_dist
+.npm
+.node-gyp
+.config
+

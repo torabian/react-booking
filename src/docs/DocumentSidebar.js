@@ -1,43 +1,40 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { SidebarItems } from './project';
+import { MenuItem } from './DocumentMenuItem';
+
+function BuildSidebarItems(onClickClose) {
+  return SidebarItems.map(item => {
+    return (
+      <MenuItem {...item} onClickClose={onClickClose}>
+        {item.children
+          ? item.children.map(child => (
+              <MenuItem {...child} onClickClose={onClickClose} />
+            ))
+          : null}
+      </MenuItem>
+    );
+  });
+}
 
 export class DocumentSidebar extends React.Component {
-  closeMenu() {
-    if (this.props.onClickClose) {
-      this.props.onClickClose();
-    }
-  }
-
   render() {
     return (
       <div className="document-sidebar">
         <div className="document-sidebar-title-wrappper">
-          <div className="document-title">React-booking &trade;</div>
-          <button onClick={() => this.closeMenu()}>
+          <div className="document-info-container">
+            <div className="document-title">React-booking &trade;</div>
+            <div className="document-subtitle">
+              Booking and reservation solution
+            </div>
+          </div>
+          <button onClick={this.props.onClickClose}>
             <i className="icon icon-close" />
             <span>CLOSE</span>
           </button>
         </div>
 
         <ul className="menu-items">
-          <li>
-            <Link onClick={() => this.closeMenu()} to="/">
-              <i className="icon icon-getting-started" />
-              Installation & Demo
-            </Link>
-          </li>
-          <li>
-            <Link onClick={() => this.closeMenu()} to="/on-submit-props">
-              <i className="icon icon-sending-data" />
-              Submit call back
-            </Link>
-          </li>
-          <li>
-            <Link onClick={() => this.closeMenu()} to="/payment-methods">
-              <i className="icon icon-credit-card" />
-              Payment methods
-            </Link>
-          </li>
+          {BuildSidebarItems(this.props.onClickClose)}
         </ul>
       </div>
     );

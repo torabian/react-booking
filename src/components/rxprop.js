@@ -4,6 +4,7 @@ import values from 'lodash.values';
 
 // from babel
 function _extends() {
+  // eslint-disable-next-line
   _extends =
     Object.assign ||
     function(target) {

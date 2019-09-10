@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FormInputComponent } from './form-input.component';
-import { setAppointment } from './store';
+import { setAppointment, getAppointment } from './store';
 
 export class FormComponent extends Component {
   constructor(props) {
@@ -9,11 +9,14 @@ export class FormComponent extends Component {
       loading: false,
       response: null,
       form: {
-        fullName: null,
-        email: null,
-        phoneNumber: null,
-        address: null,
-        zipCode: null
+        module_id: this.props.module_id,
+        customer_fullname: null,
+        customer_email: null,
+        customer_phone: null,
+        customer_address: null,
+        customer_zipCode: null,
+        customer_location: null,
+        customer_message: null
       }
     };
   }
@@ -23,7 +26,10 @@ export class FormComponent extends Component {
       response: this.props.response
     });
     if (this.props.response) {
-      setAppointment(this.props.response.form);
+      setAppointment(
+        this.props.response.form.module_id,
+        this.props.response.form
+      );
       this.props.history.push('/final-status');
       this.setState({
         loading: false
@@ -43,8 +49,6 @@ export class FormComponent extends Component {
     this.props.history.push('/');
   }
 
-  nextStep() {}
-
   onSubmit(e) {
     e && e.preventDefault && e.preventDefault();
     let validation = this.preValidator(this.state.form);
@@ -62,7 +66,12 @@ export class FormComponent extends Component {
         response: {}
       });
       if (this.props.onFormSubmit) {
-        this.props.onFormSubmit(this.state.form);
+        const store_data = getAppointment(this.props.module_id);
+        const form_data = {
+          ...this.state.form,
+          id: store_data.slotId
+        };
+        this.props.onFormSubmit(form_data);
         this.setState({
           loading: true
         });
@@ -72,41 +81,41 @@ export class FormComponent extends Component {
 
   preValidator(form) {
     const errors = [];
-    if (!form.fullName) {
+    if (!form.customer_fullname) {
       errors.push({
-        location: 'fullName',
+        location: 'customer_fullname',
         message: 'We need your full name.'
       });
     }
 
-    if (!form.email) {
+    if (!form.customer_email) {
       errors.push({
-        location: 'email',
+        location: 'customer_email',
         message: 'Please enter your email address.'
       });
     } else {
-      if (!/\S+@\S+\.\S+/.test(form.email)) {
+      if (!/\S+@\S+\.\S+/.test(form.customer_email)) {
         errors.push({
-          location: 'email',
+          location: 'customer_email',
           message:
             'We need your email address in correct form (my.name@gmail.com)'
         });
       }
     }
 
-    if (!form.phoneNumber) {
+    if (!form.customer_phone) {
       errors.push({
-        location: 'phoneNumber',
+        location: 'customer_phone',
         message: 'Please enter your phone number.'
       });
     } else {
       if (
-        !/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(
-          form.phoneNumber
+        !/^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$/im.test(
+          form.customer_phone
         )
       ) {
         errors.push({
-          location: 'phoneNumber',
+          location: 'customer_phone',
           message:
             'Enter your phone number in correct format e.g +18182003004000'
         });
@@ -128,49 +137,50 @@ export class FormComponent extends Component {
           <div className="d-flex flex-wrap">
             <div className="flex-1">
               <FormInputComponent
-                name="fullName"
+                name="customer_fullname"
                 title="FULLNAME"
                 icon="icon-user"
+                autoFocus
                 response={this.state.response}
-                onChange={e => this.setFormState('fullName', e)}
+                onChange={e => this.setFormState('customer_fullname', e)}
               />
             </div>
             <div className="flex-1">
               <FormInputComponent
-                name="email"
+                name="customer_email"
                 title="EMAIL"
                 icon="icon-at-sign"
                 response={this.state.response}
-                onChange={e => this.setFormState('email', e)}
+                onChange={e => this.setFormState('customer_email', e)}
               />
             </div>
             <div className="flex-1">
               <FormInputComponent
-                name="phoneNumber"
+                name="customer_phone"
                 title="PHONE NUMBER"
                 icon="icon-phone"
                 response={this.state.response}
-                onChange={e => this.setFormState('phoneNumber', e)}
+                onChange={e => this.setFormState('customer_phone', e)}
               />
             </div>
           </div>
           <div className="d-flex flex-wrap">
             <div className="flex-3">
               <FormInputComponent
-                name="address"
+                name="customer_address"
                 title="ADDRESS (optional)"
                 icon="icon-map-pin"
                 response={this.state.response}
-                onChange={e => this.setFormState('address', e)}
+                onChange={e => this.setFormState('customer_address', e)}
               />
             </div>
             <div className="flex-1">
               <FormInputComponent
-                name="zipCode"
+                name="customer_zipCode"
                 title="ZIP CODE (optional)"
                 icon="icon-map"
                 response={this.state.response}
-                onChange={e => this.setFormState('zipCode', e)}
+                onChange={e => this.setFormState('customer_zipCode', e)}
               />
             </div>
           </div>

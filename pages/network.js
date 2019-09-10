@@ -1,6 +1,6 @@
 import { SSRStore } from './ssr-store';
 
-const URL = process.env.REACT_APP_API || 'http://calendar.pixelplux.com';
+const URL = process.env.REACT_APP_API || '';
 
 export function remove(affix, data) {
   return fetch(URL + affix, {

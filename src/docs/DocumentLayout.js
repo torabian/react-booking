@@ -1,12 +1,24 @@
 import React from 'react';
+import ScrollMemory from 'react-router-scroll-memory';
+
 import { DocumentSidebar } from './DocumentSidebar';
-import { GettingStarted } from './pages/GettingStarted';
-import { HashRouter as Router, Route } from 'react-router-dom';
-import { OnSubmit } from './pages/OnSubmit';
-import { PaymentDoc } from './pages/PaymentDoc';
 import { DocumentNavbar } from './DocumentNavbar';
-// import { BusinessContact } from './pages/BusinessContact';
-// import { BookingAndReservation } from './pages/Booking';
+import { HashRouter, BrowserRouter, Route } from 'react-router-dom';
+import { Routes, PREFIX } from './project';
+
+function buildRoutes() {
+  return (
+    <>
+      {Routes.map(route => (
+        <Route
+          exact
+          path={`${PREFIX}/${route.path}`}
+          component={route.component}
+        />
+      ))}
+    </>
+  );
+}
 
 export class DocumentLayout extends React.Component {
   constructor(props) {
@@ -43,9 +55,15 @@ export class DocumentLayout extends React.Component {
   }
 
   render() {
-    console.log('size:', this.state.windowSize);
+    const Router =
+      window.location.host === 'pixelplux.github.io'
+        ? HashRouter
+        : BrowserRouter;
+
     return (
       <Router>
+        <ScrollMemory />
+
         <div
           className={
             'document-layout' + (this.state.activeMenu ? ' active' : '')
@@ -54,11 +72,7 @@ export class DocumentLayout extends React.Component {
           <DocumentSidebar onClickClose={() => this.toggleMenu(false)} />
           <div className="document-content-wrapper">
             <DocumentNavbar onClickMenu={e => this.toggleMenu(e)} />
-            <div className="document-content">
-              <Route exact path="/" component={GettingStarted} />
-              <Route exact path="/on-submit-props" component={OnSubmit} />
-              <Route exact path="/payment-methods" component={PaymentDoc} />
-            </div>
+            <div className="document-content">{buildRoutes()}</div>
           </div>
         </div>
       </Router>
