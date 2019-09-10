@@ -26,7 +26,7 @@ export class MenuItem extends React.Component {
           className={!this.props.icon ? 'no-icon-link' : null}
           onClick={this.props.onClickClose}
           to={PREFIX + '/' + this.props.path}
-          as={'/documentation/' + this.props.path}
+          as={PREFIX + '/' + this.props.path}
           prefetch
           href={{
             acceptLang: 'en',
