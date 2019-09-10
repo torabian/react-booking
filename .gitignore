@@ -29,3 +29,6 @@ package.json~
 .next
 embed-build
 npm_dist
+.npm
+.node-gyp
+.config

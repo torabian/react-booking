@@ -22,7 +22,7 @@ app.prepare().then(() => {
 
     const buildUrl = url => {
       return `<url>
-          <loc>https://pixelplux.com/documentation/${url.path}</loc>
+          <loc>https://pixelplux.com/booking/documentation/${url.path}</loc>
           <lastmod>2019-09-10</lastmod>
           <changefreq>monthly</changefreq>
           <priority>0.8</priority>

@@ -21,7 +21,7 @@ const location =
 export const PREFIX =
   location.host === 'pixelplux.github.io' || location.hostname === 'localhost'
     ? ''
-    : '/documentation';
+    : '/booking/documentation';
 
 export const SidebarItems = [
   {
