@@ -1,3 +1,7 @@
+## Visit https://pixelplux.com
+
+We kindly invite you to visit our commercial projects https://pixelplux.com
+
 # React booking - Booking and reservation widget for React and other web applications
 
 React booking is set of widgets used for booking, appointment, calendar reservation apps written using ReactJs.
